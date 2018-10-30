@@ -1,0 +1,16 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "prettier"
+  ],
+  "extends": [
+    "plugin:prettier/recommended",
+    "react-app"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-console": ["warn"],
+    "no-trailing-spaces": "warn",
+    "quote-props": ["error", "as-needed"]
+  }
+}
