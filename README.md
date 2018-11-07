@@ -8,7 +8,7 @@
 * Go to the server directory `cd server`;
 * Install dependencies `npm install`;
 * Deploy custom functions `8base deploy`;
-* Import schema and data via `8base import -f="./EXPORT.JSON"`;
+* Import schema and data via `8base import -f=EXPORT.JSON`;
 
 ## Client Setup
 
