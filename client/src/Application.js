@@ -14,11 +14,10 @@ import { Customers } from './routes/customers';
 import { Properties } from './routes/properties';
 import { Listings } from './routes/listings';
 
-const {
-  REACT_APP_8BASE_API_ENDPOINT,
-  REACT_APP_AUTH_DOMAIN,
-  REACT_APP_AUTH_CLIENT_ID,
-} = process.env;
+const { REACT_APP_8BASE_API_ENDPOINT } = process.env;
+
+const AUTH_CLIENT_ID = "qGHZVu5CxY5klivm28OPLjopvsYp0baD";
+const AUTH_DOMAIN = "auth.8base.com";
 
 class Application extends React.PureComponent {
   renderContent = ({ loading }) => (
@@ -62,8 +61,8 @@ class Application extends React.PureComponent {
         <EightBaseBoostProvider>
           <EightBaseAppProvider
             uri={ REACT_APP_8BASE_API_ENDPOINT }
-            authDomain={ REACT_APP_AUTH_DOMAIN }
-            authClientId={ REACT_APP_AUTH_CLIENT_ID }
+            authDomain={ AUTH_DOMAIN }
+            authClientId={ AUTH_CLIENT_ID }
             authRedirectUri={ `${window.location.origin}/auth/callback` }
             onRequestSuccess={ this.onRequestSuccess }
           >

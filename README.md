@@ -14,9 +14,7 @@
 
 * Go to the client directory `cd client`;
 * Install dependencies `npm install`;
-* Create .env file `cp .env.example .env`;
 * Get 8base API endpoint for your account;
-* Enter value from the step 2 to the `REACT_APP_8BASE_API_ENDPOINT` variable;
-* Start app via `npm start`;
+* Start app via `REACT_APP_8BASE_API_ENDPOINT=%YOUR_ENDPOINT% npm start`;
 * Login to the app with your 8base credentials;
 * Explore it.
