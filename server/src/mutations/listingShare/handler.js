@@ -34,7 +34,7 @@ module.exports = async (event, ctx) => {
       from: GMAIL_USER,
       to: event.data.email,
       subject: `Share listing with property "${property.title}"`,
-      html: `Listing with property title "${property.title} <img src="${property.pictures.items[0].shareUrl}?download=true" />`,
+      html: `Listing with property title "${property.title}"<br /><img src="${property.pictures.items[0].shareUrl}?download=true" />`,
     });
   } catch (e) {
     return { data: { success: false }};
