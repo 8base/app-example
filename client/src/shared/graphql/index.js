@@ -149,6 +149,7 @@ export const LISTINGS_LIST_QUERY = gql`
         }
         documents {
           items {
+            id
             filename
             downloadUrl
           }
@@ -194,6 +195,7 @@ export const PROPERTIES_LIST_QUERY = gql`
         updatedAt
         pictures {
           items {
+            id
             downloadUrl
             shareUrl
           }
