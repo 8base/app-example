@@ -602,6 +602,7 @@
       "$id": "property-1",
       "pictures": [{
         "fileId": "4t6usZX5Tc6QyA2GisXA",
+        "public": true,
         "filename": "house.jpeg"
       }],
       "bedrooms": 1,
@@ -618,6 +619,7 @@
       "$id": "property-2",
       "pictures": [{
         "fileId": "B52KS1elSayC3Pqnp3fF",
+        "public": true,
         "filename": "house.jpeg"
       }],
       "bedrooms": 1,
@@ -634,6 +636,7 @@
       "$id": "property-3",
       "pictures": [{
         "fileId": "0yiwgS31RzCMWgI0s0eM",
+        "public": true,
         "filename": "house.jpeg"
       }],
       "bedrooms": 1,
@@ -650,6 +653,7 @@
       "$id": "property-4",
       "pictures": [{
         "fileId": "trI35UwRw6eQ03FztmBb",
+        "public": true,
         "filename": "house.jpeg"
       }],
       "bedrooms": 1,
@@ -666,6 +670,7 @@
       "$id": "property-5",
       "pictures": [{
         "fileId": "LgJDMmuMRwqHVtPOULFt",
+        "public": true,
         "filename": "house.jpeg"
       }],
       "bedrooms": 1,
@@ -682,6 +687,7 @@
       "$id": "property-6",
       "pictures": [{
         "fileId": "PAB7ltMBRFCCebW5j2Wp",
+        "public": true,
         "filename": "house.jpeg"
       }],
       "bedrooms": 1,
@@ -698,6 +704,7 @@
       "$id": "property-7",
       "pictures": [{
         "fileId": "c7SDtuK0TdOJEHnlOZD5",
+        "public": true,
         "filename": "house.jpeg"
       }],
       "bedrooms": 1,
@@ -714,6 +721,7 @@
       "$id": "property-8",
       "pictures": [{
         "fileId": "pgS0Oih6RbaOUa1DIbzt",
+        "public": true,
         "filename": "house.jpeg"
       }],
       "bedrooms": 1,
@@ -730,6 +738,7 @@
       "$id": "property-9",
       "pictures": [{
         "fileId": "OMOpW0apR5KJEw8VOruw",
+        "public": true,
         "filename": "house.jpeg"
       }],
       "bedrooms": 1,
@@ -746,6 +755,7 @@
       "$id": "property-10",
       "pictures": [{
         "fileId": "RuekIdG7QFC7mrYhfcaG",
+        "public": true,
         "filename": "house.jpeg"
       }],
       "bedrooms": 1,
