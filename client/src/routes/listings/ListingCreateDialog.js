@@ -1,4 +1,5 @@
 import React from 'react';
+import * as R from 'ramda';
 import { Form, Field } from '@8base/forms';
 import { Dialog, Grid, Button, InputField, SelectField, DateInputField, ModalContext } from '@8base/boost';
 import { Query, graphql } from 'react-apollo';
@@ -8,7 +9,10 @@ import * as sharedGraphQL from 'shared/graphql';
 import { TOAST_SUCCESS_MESSAGE } from 'shared/constants';
 
 const getPropertyOptions = (properties = []) => properties.map((property) => ({ value: property.id, label: property.title }));
-const getUserOptions = (users = []) => users.map((item) => ({ value: item.id, label: `${item.user.firstName} ${item.user.lastName}` }));
+const getUserOptions = (users = []) => users.map((item) => ({
+  value: item.id,
+  label: `${R.propOr('Unititled', 'firstName', item.user)} ${R.propOr('Unititled', 'lastName', item.user)}`,
+}));
 
 const LISTING_CREATE_DIALOG_ID = 'LISTING_CREATE_DIALOG_ID';
 
