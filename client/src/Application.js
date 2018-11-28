@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { Auth0WebClient } from '@8base/auth';
 import { EightBaseAppProvider } from '@8base/app-provider';
 import { EightBaseBoostProvider, AsyncContent } from '@8base/boost';
 import { ToastContainer, toast } from 'react-toastify';
@@ -16,14 +17,21 @@ import { Listings } from './routes/listings';
 
 const { REACT_APP_8BASE_API_ENDPOINT } = process.env;
 
-const AUTH_CLIENT_ID = "qGHZVu5CxY5klivm28OPLjopvsYp0baD";
-const AUTH_DOMAIN = "auth.8base.com";
+const AUTH_CLIENT_ID = 'qGHZVu5CxY5klivm28OPLjopvsYp0baD';
+const AUTH_DOMAIN = 'auth.8base.com';
+
+const auth0WebClient = new Auth0WebClient({
+  domain: AUTH_DOMAIN,
+  clientID: AUTH_CLIENT_ID,
+  redirectUri: `${window.location.origin}/auth/callback`,
+  logoutRedirectUri: `${window.location.origin}/auth`,
+});
 
 class Application extends React.PureComponent {
   renderContent = ({ loading }) => (
     <AsyncContent loading={loading} stretch>
       <Switch>
-        <Route path="/auth" component={ Auth } />
+        <Route path="/auth" component={Auth} />
         <Route>
           <MainPlate>
             <Nav.Plate color="BLUE">
@@ -34,10 +42,10 @@ class Application extends React.PureComponent {
             </Nav.Plate>
             <ContentPlate>
               <Switch>
-                <ProtectedRoute exact path="/brokers" component={ Brokers } />
-                <ProtectedRoute exact path="/customers" component={ Customers } />
-                <ProtectedRoute exact path="/properties" component={ Properties } />
-                <ProtectedRoute exact path="/listings" component={ Listings } />
+                <ProtectedRoute exact path="/brokers" component={Brokers} />
+                <ProtectedRoute exact path="/customers" component={Customers} />
+                <ProtectedRoute exact path="/properties" component={Properties} />
+                <ProtectedRoute exact path="/listings" component={Listings} />
                 <Redirect to="/brokers" />
               </Switch>
             </ContentPlate>
@@ -60,20 +68,17 @@ class Application extends React.PureComponent {
       <BrowserRouter>
         <EightBaseBoostProvider>
           <EightBaseAppProvider
-            uri={ REACT_APP_8BASE_API_ENDPOINT }
-            authDomain={ AUTH_DOMAIN }
-            authClientId={ AUTH_CLIENT_ID }
-            authRedirectUri={ `${window.location.origin}/auth/callback` }
-            onRequestSuccess={ this.onRequestSuccess }
+            uri={REACT_APP_8BASE_API_ENDPOINT}
+            authClient={auth0WebClient}
+            onRequestSuccess={this.onRequestSuccess}
           >
-            { this.renderContent }
+            {this.renderContent}
           </EightBaseAppProvider>
-          <ToastContainer position={ toast.POSITION.BOTTOM_LEFT } />
+          <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
         </EightBaseBoostProvider>
       </BrowserRouter>
     );
   }
 }
-
 
 export { Application };
