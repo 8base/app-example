@@ -29,8 +29,8 @@
     "recompose": "^0.27.0"
   },
   "scripts": {
-    "start": "NODE_PATH=src react-scripts start",
-    "build": "NODE_PATH=src react-scripts build",
+    "start": "cross-env NODE_PATH=src react-scripts start",
+    "build": "cross-env NODE_PATH=src react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "eslint": "eslint src/**/*.js"
@@ -38,6 +38,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel-eslint": "^9.0.0",
+    "cross-env": "^5.2.0",
     "eslint": "^5.8.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-config-react-app": "^3.0.5",
