@@ -151,453 +151,11 @@
           "isUnique": null,
           "defaultValue": false,
           "relation": null
-        },
-        {
-          "id": "5ba03794b55ec4a28c6d5878",
-          "name": "listings",
-          "displayName": "Listings",
-          "description": null,
-          "fieldType": "RELATION",
-          "fieldTypeAttributes": null,
-          "isList": true,
-          "isRequired": false,
-          "isUnique": null,
-          "defaultValue": null,
-          "relation": {
-            "id": "5ba03794b55ec412ba6d5879",
-            "refFieldIsList": false,
-            "refFieldIsRequired": false,
-            "refFieldName": "property",
-            "refFieldDisplayName": "Property",
-            "refTable": {
-              "name": "Listings"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "id": "5ba03300b55ec4fa146d2cfc",
-      "name": "Brokers",
-      "displayName": "Brokers",
-      "isSystem": false,
-      "fields": [{
-          "id": "5ba03310b55ec4b9536d2ef3",
-          "name": "user",
-          "displayName": "User",
-          "description": null,
-          "fieldType": "RELATION",
-          "fieldTypeAttributes": null,
-          "isList": false,
-          "isRequired": false,
-          "isUnique": null,
-          "defaultValue": null,
-          "relation": {
-            "id": "5ba03310b55ec4299d6d2ef4",
-            "refFieldIsList": true,
-            "refFieldIsRequired": false,
-            "refFieldName": "broker",
-            "refFieldDisplayName": "Broker",
-            "refTable": {
-              "name": "Users"
-            }
-          }
-        },
-        {
-          "id": "5ba03785b55ec498a56d56f9",
-          "name": "listings",
-          "displayName": "Listings",
-          "description": null,
-          "fieldType": "RELATION",
-          "fieldTypeAttributes": null,
-          "isList": true,
-          "isRequired": false,
-          "isUnique": null,
-          "defaultValue": null,
-          "relation": {
-            "id": "5ba03785b55ec452ee6d56fa",
-            "refFieldIsList": false,
-            "refFieldIsRequired": false,
-            "refFieldName": "broker",
-            "refFieldDisplayName": "Broker",
-            "refTable": {
-              "name": "Listings"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "id": "5ba035bcb55ec478556d48b4",
-      "name": "Customers",
-      "displayName": "Customers",
-      "isSystem": false,
-      "fields": [{
-          "id": "5ba035c8b55ec4d01a6d4ac0",
-          "name": "user",
-          "displayName": "User",
-          "description": null,
-          "fieldType": "RELATION",
-          "fieldTypeAttributes": null,
-          "isList": false,
-          "isRequired": false,
-          "isUnique": null,
-          "defaultValue": null,
-          "relation": {
-            "id": "5ba035c8b55ec4ca026d4ac1",
-            "refFieldIsList": true,
-            "refFieldIsRequired": false,
-            "refFieldName": "customer",
-            "refFieldDisplayName": "Customer",
-            "refTable": {
-              "name": "Users"
-            }
-          }
-        },
-        {
-          "id": "5ba03726b55ec4e35a6d4fae",
-          "name": "purchases",
-          "displayName": "Purchases",
-          "description": null,
-          "fieldType": "RELATION",
-          "fieldTypeAttributes": null,
-          "isList": true,
-          "isRequired": false,
-          "isUnique": null,
-          "defaultValue": null,
-          "relation": {
-            "id": "5ba03726b55ec4d6c16d4faf",
-            "refFieldIsList": false,
-            "refFieldIsRequired": false,
-            "refFieldName": "buyer",
-            "refFieldDisplayName": "Buyer",
-            "refTable": {
-              "name": "Listings"
-            }
-          }
-        },
-        {
-          "id": "5ba03735b55ec480436d511f",
-          "name": "sales",
-          "displayName": "Sales",
-          "description": null,
-          "fieldType": "RELATION",
-          "fieldTypeAttributes": null,
-          "isList": true,
-          "isRequired": false,
-          "isUnique": null,
-          "defaultValue": null,
-          "relation": {
-            "id": "5ba03735b55ec4620d6d5120",
-            "refFieldIsList": false,
-            "refFieldIsRequired": false,
-            "refFieldName": "seller",
-            "refFieldDisplayName": "Seller",
-            "refTable": {
-              "name": "Listings"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "id": "5ba036feb55ec419ad6d4c1d",
-      "name": "Listings",
-      "displayName": "Listings",
-      "isSystem": false,
-      "fields": [{
-          "id": "5ba0370eb55ec41e2f6d4e3e",
-          "name": "documents",
-          "displayName": "Documents",
-          "description": null,
-          "fieldType": "FILE",
-          "fieldTypeAttributes": {
-            "id": "5ba0370eb55ec409b06d4e3f",
-            "format": "FILE",
-            "showTitle": null,
-            "showUrl": null,
-            "maxSize": null,
-            "typeRestrictions": null
-          },
-          "isList": true,
-          "isRequired": false,
-          "isUnique": null,
-          "defaultValue": null,
-          "relation": null
-        },
-        {
-          "id": "5ba03726b55ec49a106d4fac",
-          "name": "buyer",
-          "displayName": "Buyer",
-          "description": null,
-          "fieldType": "RELATION",
-          "fieldTypeAttributes": null,
-          "isList": false,
-          "isRequired": false,
-          "isUnique": null,
-          "defaultValue": null,
-          "relation": {
-            "id": "5ba03726b55ec461df6d4fad",
-            "refFieldIsList": true,
-            "refFieldIsRequired": false,
-            "refFieldName": "purchases",
-            "refFieldDisplayName": "Purchases",
-            "refTable": {
-              "name": "Customers"
-            }
-          }
-        },
-        {
-          "id": "5ba03735b55ec4e8326d511d",
-          "name": "seller",
-          "displayName": "Seller",
-          "description": null,
-          "fieldType": "RELATION",
-          "fieldTypeAttributes": null,
-          "isList": false,
-          "isRequired": false,
-          "isUnique": null,
-          "defaultValue": null,
-          "relation": {
-            "id": "5ba03735b55ec46e726d511e",
-            "refFieldIsList": true,
-            "refFieldIsRequired": false,
-            "refFieldName": "sales",
-            "refFieldDisplayName": "Sales",
-            "refTable": {
-              "name": "Customers"
-            }
-          }
-        },
-        {
-          "id": "5ba03763b55ec43fe66d5292",
-          "name": "status",
-          "displayName": "Status",
-          "description": null,
-          "fieldType": "SWITCH",
-          "fieldTypeAttributes": {
-            "id": "5ba03763b55ec42ee16d5293",
-            "format": "CUSTOM",
-            "listOptions": [
-              "Lead",
-              "Closing",
-              "Active",
-              "Closed",
-              "Cancelled"
-            ]
-          },
-          "isList": false,
-          "isRequired": false,
-          "isUnique": null,
-          "defaultValue": null,
-          "relation": null
-        },
-        {
-          "id": "5ba03770b55ec437556d5407",
-          "name": "closingDate",
-          "displayName": "Closing Date",
-          "description": null,
-          "fieldType": "DATE",
-          "fieldTypeAttributes": {
-            "id": "5ba03770b55ec47e6a6d5408",
-            "format": "DATE"
-          },
-          "isList": false,
-          "isRequired": false,
-          "isUnique": false,
-          "defaultValue": null,
-          "relation": null
-        },
-        {
-          "id": "5ba0377ab55ec4fa906d557e",
-          "name": "price",
-          "displayName": "Price",
-          "description": null,
-          "fieldType": "NUMBER",
-          "fieldTypeAttributes": {
-            "id": "5ba0377ab55ec45a736d557f",
-            "format": "NUMBER",
-            "precision": 2,
-            "currency": null,
-            "minValue": 0,
-            "maxValue": null
-          },
-          "isList": false,
-          "isRequired": false,
-          "isUnique": false,
-          "defaultValue": null,
-          "relation": null
-        },
-        {
-          "id": "5ba03785b55ec4246d6d56f7",
-          "name": "broker",
-          "displayName": "Broker",
-          "description": null,
-          "fieldType": "RELATION",
-          "fieldTypeAttributes": null,
-          "isList": false,
-          "isRequired": false,
-          "isUnique": null,
-          "defaultValue": null,
-          "relation": {
-            "id": "5ba03785b55ec4642e6d56f8",
-            "refFieldIsList": true,
-            "refFieldIsRequired": false,
-            "refFieldName": "listings",
-            "refFieldDisplayName": "Listings",
-            "refTable": {
-              "name": "Brokers"
-            }
-          }
-        },
-        {
-          "id": "5ba03794b55ec443486d5876",
-          "name": "property",
-          "displayName": "Property",
-          "description": null,
-          "fieldType": "RELATION",
-          "fieldTypeAttributes": null,
-          "isList": false,
-          "isRequired": false,
-          "isUnique": null,
-          "defaultValue": null,
-          "relation": {
-            "id": "5ba03794b55ec4d7d46d5877",
-            "refFieldIsList": true,
-            "refFieldIsRequired": false,
-            "refFieldName": "listings",
-            "refFieldDisplayName": "Listings",
-            "refTable": {
-              "name": "Properties"
-            }
-          }
         }
       ]
     }
   ],
   "data": {
-    "Brokers": [{
-        "$id": "broker-1",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "broker-2",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "broker-3",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "broker-4",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "broker-5",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "broker-6",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "broker-7",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "broker-8",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "broker-9",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "broker-10",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      }
-    ],
-    "Customers": [{
-        "$id": "customer-1",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "customer-2",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "customer-3",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "customer-4",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "customer-5",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "customer-6",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "customer-7",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "customer-8",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "customer-9",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      },
-      {
-        "$id": "customer-10",
-        "user": {
-          "$id": "$currentUserId"
-        }
-      }
-    ],
     "Properties": [{
       "$id": "property-1",
       "pictures": [{
@@ -611,10 +169,7 @@
       "sqFootage": 1000,
       "bathrooms": 2,
       "garage": true,
-      "pool": true,
-      "listings": [{
-        "$id": "listing-1"
-      }]
+      "pool": true
     }, {
       "$id": "property-2",
       "pictures": [{
@@ -628,10 +183,7 @@
       "sqFootage": 1000,
       "bathrooms": 2,
       "garage": true,
-      "pool": true,
-      "listings": [{
-        "$id": "listing-2"
-      }]
+      "pool": true
     }, {
       "$id": "property-3",
       "pictures": [{
@@ -645,10 +197,7 @@
       "sqFootage": 1000,
       "bathrooms": 2,
       "garage": true,
-      "pool": true,
-      "listings": [{
-        "$id": "listing-3"
-      }]
+      "pool": true
     }, {
       "$id": "property-4",
       "pictures": [{
@@ -662,10 +211,7 @@
       "sqFootage": 1000,
       "bathrooms": 2,
       "garage": true,
-      "pool": true,
-      "listings": [{
-        "$id": "listing-4"
-      }]
+      "pool": true
     }, {
       "$id": "property-5",
       "pictures": [{
@@ -679,10 +225,7 @@
       "sqFootage": 1000,
       "bathrooms": 2,
       "garage": true,
-      "pool": true,
-      "listings": [{
-        "$id": "listing-5"
-      }]
+      "pool": true
     }, {
       "$id": "property-6",
       "pictures": [{
@@ -696,10 +239,7 @@
       "sqFootage": 1000,
       "bathrooms": 2,
       "garage": true,
-      "pool": true,
-      "listings": [{
-        "$id": "listing-6"
-      }]
+      "pool": true
     }, {
       "$id": "property-7",
       "pictures": [{
@@ -713,10 +253,7 @@
       "sqFootage": 1000,
       "bathrooms": 2,
       "garage": true,
-      "pool": true,
-      "listings": [{
-        "$id": "listing-7"
-      }]
+      "pool": true
     }, {
       "$id": "property-8",
       "pictures": [{
@@ -730,10 +267,7 @@
       "sqFootage": 1000,
       "bathrooms": 2,
       "garage": true,
-      "pool": true,
-      "listings": [{
-        "$id": "listing-8"
-      }]
+      "pool": true
     }, {
       "$id": "property-9",
       "pictures": [{
@@ -747,10 +281,7 @@
       "sqFootage": 1000,
       "bathrooms": 2,
       "garage": true,
-      "pool": true,
-      "listings": [{
-        "$id": "listing-9"
-      }]
+      "pool": true
     }, {
       "$id": "property-10",
       "pictures": [{
@@ -764,191 +295,7 @@
       "sqFootage": 1000,
       "bathrooms": 2,
       "garage": true,
-      "pool": true,
-      "listings": [{
-        "$id": "listing-10"
-      }]
-    }],
-    "Listings": [{
-      "$id": "listing-1",
-      "property": {
-        "$id": "property-1"
-      },
-      "broker": {
-        "$id": "broker-9"
-      },
-      "buyer": {
-        "$id": "customer-9"
-      },
-      "seller": {
-        "$id": "customer-1"
-      },
-      "documents": [],
-      "status": "Lead",
-      "closingDate": null,
-      "price": 12345
-    }, {
-      "$id": "listing-2",
-      "property": {
-        "$id": "property-2"
-      },
-      "broker": {
-        "$id": "broker-5"
-      },
-      "buyer": {
-        "$id": "customer-10"
-      },
-      "seller": {
-        "$id": "customer-1"
-      },
-      "documents": [],
-      "status": "Lead",
-      "closingDate": null,
-      "price": 12345
-    }, {
-      "$id": "listing-3",
-      "property": {
-        "$id": "property-3"
-      },
-      "broker": {
-        "$id": "broker-5"
-      },
-      "buyer": {
-        "$id": "customer-4"
-      },
-      "seller": {
-        "$id": "customer-8"
-      },
-      "documents": [],
-      "status": "Lead",
-      "closingDate": null,
-      "price": 12345
-    }, {
-      "$id": "listing-4",
-      "property": {
-        "$id": "property-4"
-      },
-      "broker": {
-        "$id": "broker-10"
-      },
-      "buyer": {
-        "$id": "customer-10"
-      },
-      "seller": {
-        "$id": "customer-7"
-      },
-      "documents": [],
-      "status": "Lead",
-      "closingDate": null,
-      "price": 12345
-    }, {
-      "$id": "listing-5",
-      "property": {
-        "$id": "property-5"
-      },
-      "broker": {
-        "$id": "broker-7"
-      },
-      "buyer": {
-        "$id": "customer-3"
-      },
-      "seller": {
-        "$id": "customer-2"
-      },
-      "documents": [],
-      "status": "Lead",
-      "closingDate": null,
-      "price": 12345
-    }, {
-      "$id": "listing-6",
-      "property": {
-        "$id": "property-5"
-      },
-      "broker": {
-        "$id": "broker-7"
-      },
-      "buyer": {
-        "$id": "customer-3"
-      },
-      "seller": {
-        "$id": "customer-2"
-      },
-      "documents": [],
-      "status": "Lead",
-      "closingDate": null,
-      "price": 12345
-    }, {
-      "$id": "listing-7",
-      "property": {
-        "$id": "property-5"
-      },
-      "broker": {
-        "$id": "broker-7"
-      },
-      "buyer": {
-        "$id": "customer-3"
-      },
-      "seller": {
-        "$id": "customer-2"
-      },
-      "documents": [],
-      "status": "Lead",
-      "closingDate": null,
-      "price": 12345
-    }, {
-      "$id": "listing-8",
-      "property": {
-        "$id": "property-5"
-      },
-      "broker": {
-        "$id": "broker-7"
-      },
-      "buyer": {
-        "$id": "customer-3"
-      },
-      "seller": {
-        "$id": "customer-2"
-      },
-      "documents": [],
-      "status": "Lead",
-      "closingDate": null,
-      "price": 12345
-    }, {
-      "$id": "listing-9",
-      "property": {
-        "$id": "property-5"
-      },
-      "broker": {
-        "$id": "broker-7"
-      },
-      "buyer": {
-        "$id": "customer-3"
-      },
-      "seller": {
-        "$id": "customer-2"
-      },
-      "documents": [],
-      "status": "Lead",
-      "closingDate": null,
-      "price": 12345
-    }, {
-      "$id": "listing-10",
-      "property": {
-        "$id": "property-5"
-      },
-      "broker": {
-        "$id": "broker-7"
-      },
-      "buyer": {
-        "$id": "customer-3"
-      },
-      "seller": {
-        "$id": "customer-2"
-      },
-      "documents": [],
-      "status": "Lead",
-      "closingDate": null,
-      "price": 12345
+      "pool": true
     }]
   },
   "version": "0.0.44"
