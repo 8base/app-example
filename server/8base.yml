@@ -1,6 +1,6 @@
 functions:
-  listingShare:
+  propertyShare:
     handler:
-      code: src/mutations/listingShare/handler.js
+      code: src/propertyShare.js
     type: resolver
-    schema: src/mutations/listingShare/schema.graphql
+    schema: src/schema.graphql

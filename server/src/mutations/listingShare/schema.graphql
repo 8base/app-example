@@ -1,3 +1,0 @@
-extend type Mutation {
-  listingShare(id: ID!, email: String!): SuccessResponse
-}

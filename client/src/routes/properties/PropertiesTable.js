@@ -10,6 +10,7 @@ import * as sharedGraphQL from 'shared/graphql';
 import { PropertyCreateDialog } from './PropertyCreateDialog';
 import { PropertyEditDialog } from './PropertyEditDialog';
 import { PropertyDeleteDialog } from './PropertyDeleteDialog';
+import { PropertyShareDialog } from './PropertyShareDialog';
 
 let PropertiesTable = ({ properties, openModal, closeModal }) => (
   <Table.Plate>
@@ -71,6 +72,7 @@ let PropertiesTable = ({ properties, openModal, closeModal }) => (
                     ({ closeDropdown }) => (
                       <Menu.Plate>
                         <Menu.Item onClick={ () => { openModal(PropertyEditDialog.id, { initialValues: property }); closeDropdown(); } }>Edit</Menu.Item>
+                        <Menu.Item onClick={ () => { openModal(PropertyShareDialog.id, { id: property.id }); closeDropdown(); } }>Share</Menu.Item>
                         <Menu.Item onClick={ () => { openModal(PropertyDeleteDialog.id, { id: property.id }); closeDropdown(); } }>Delete</Menu.Item>
                       </Menu.Plate>
                     )

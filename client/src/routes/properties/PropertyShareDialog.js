@@ -7,24 +7,24 @@ import { graphql } from 'react-apollo';
 import * as sharedGraphQL from 'shared/graphql';
 import { TOAST_SUCCESS_MESSAGE } from 'shared/constants';
 
-const LISTING_SHARE_DIALOG_ID = 'LISTING_SHARE_DIALOG_ID';
+const PROPERTY_SHARE_DIALOG_ID = 'PROPERTY_SHARE_DIALOG_ID';
 
-class ListingShareDialog extends React.Component {
+class PropertyShareDialog extends React.Component {
   static contextType = ModalContext;
 
   createOnSubmit = R.memoize((id) => async (data) => {
-    await this.props.listingShare({ variables: { id, email: data.email }});
+    await this.props.propertyShare({ variables: { id, email: data.email }});
 
-    this.context.closeModal(LISTING_SHARE_DIALOG_ID);
+    this.context.closeModal(PROPERTY_SHARE_DIALOG_ID);
   });
 
   onClose = () => {
-    this.context.closeModal(LISTING_SHARE_DIALOG_ID);
+    this.context.closeModal(PROPERTY_SHARE_DIALOG_ID);
   };
 
   renderFormContent = ({ handleSubmit, invalid, submitting, pristine }) => (
     <form onSubmit={ handleSubmit }>
-      <Dialog.Header title="Share Listing" onClose={ this.onClose } />
+      <Dialog.Header title="Share Property" onClose={ this.onClose } />
       <Dialog.Body scrollable>
         <Grid.Layout gap="sm" stretch>
           <Grid.Box>
@@ -34,7 +34,7 @@ class ListingShareDialog extends React.Component {
       </Dialog.Body>
       <Dialog.Footer>
         <Button color="neutral" variant="outlined" disabled={ submitting } onClick={ this.onClose }>Cancel</Button>
-        <Button color="red" type="submit" text="Share Listing" disabled={ pristine || invalid } loading={ submitting } />
+        <Button color="red" type="submit" text="Share Property" disabled={ pristine || invalid } loading={ submitting } />
       </Dialog.Footer>
     </form>
   );
@@ -49,23 +49,23 @@ class ListingShareDialog extends React.Component {
 
   render() {
     return (
-      <Dialog.Plate id={ LISTING_SHARE_DIALOG_ID } size="sm">
+      <Dialog.Plate id={ PROPERTY_SHARE_DIALOG_ID } size="sm">
         {this.renderForm}
       </Dialog.Plate>
     );
   }
 }
 
-ListingShareDialog = graphql(sharedGraphQL.LISTING_SHARE_MUTATION, {
-  name: 'listingShare',
+PropertyShareDialog = graphql(sharedGraphQL.PROPERTY_SHARE_MUTATION, {
+  name: 'propertyShare',
   options: {
-    refetchQueries: ['ListingsList'],
+    refetchQueries: ['PropertiesList'],
     context: {
-      [TOAST_SUCCESS_MESSAGE]: 'Listing successfuly shared'
+      [TOAST_SUCCESS_MESSAGE]: 'Property successfuly shared'
     },
   },
-})(ListingShareDialog);
+})(PropertyShareDialog);
 
-ListingShareDialog.id = LISTING_SHARE_DIALOG_ID;
+PropertyShareDialog.id = PROPERTY_SHARE_DIALOG_ID;
 
-export { ListingShareDialog };
+export { PropertyShareDialog };

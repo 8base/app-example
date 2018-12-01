@@ -3,6 +3,7 @@ import { Card, Heading } from '@8base/boost';
 
 import { PropertyCreateDialog } from './PropertyCreateDialog';
 import { PropertyEditDialog } from './PropertyEditDialog';
+import { PropertyShareDialog } from './PropertyShareDialog';
 import { PropertyDeleteDialog } from './PropertyDeleteDialog';
 import { PropertiesTable } from './PropertiesTable';
 
@@ -14,6 +15,7 @@ const Properties = () => (
 
     <PropertyCreateDialog />
     <PropertyEditDialog />
+    <PropertyShareDialog />
     <PropertyDeleteDialog />
 
     <Card.Body padding="none" stretch>
