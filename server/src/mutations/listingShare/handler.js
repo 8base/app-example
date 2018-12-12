@@ -29,7 +29,9 @@ module.exports = async (event, ctx) => {
 
   try {
     const { listing: { property } } = response;
-
+    
+    console.log("Sending email...");
+    
     await sendMail({
       from: GMAIL_USER,
       to: event.data.email,
