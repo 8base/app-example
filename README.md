@@ -18,3 +18,7 @@
 * Start app via `cross-env REACT_APP_8BASE_API_ENDPOINT=%YOUR_ENDPOINT% npm start`;
 * Login to the app with your 8base credentials;
 * Explore it.
+
+## Getting logs
+
+To get logs from the `listingShare` custom function use `8base logs listingShare`. Learn more about local development tools in our <a href="https://docs.8base.com/docs/local-development" target="_blank">docs</a>.
