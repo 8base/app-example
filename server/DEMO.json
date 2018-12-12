@@ -1,20 +1,15 @@
 {
   "tables": [{
-      "id": "5ba02f93b55ec4d5156d2176",
       "name": "Properties",
       "displayName": "Properties",
       "isSystem": false,
       "fields": [{
-          "id": "5ba02fb2b55ec45bb06d246a",
           "name": "pictures",
           "displayName": "Pictures",
           "description": null,
           "fieldType": "FILE",
           "fieldTypeAttributes": {
-            "id": "5ba02fb2b55ec41c8d6d246b",
             "format": "IMAGE",
-            "showTitle": null,
-            "showUrl": null,
             "maxSize": null,
             "typeRestrictions": null
           },
@@ -25,13 +20,11 @@
           "relation": null
         },
         {
-          "id": "5ba0303fb55ec483036d25a0",
           "name": "bedrooms",
           "displayName": "Bedrooms",
           "description": null,
           "fieldType": "NUMBER",
           "fieldTypeAttributes": {
-            "id": "5ba0303fb55ec464016d25a1",
             "format": "NUMBER",
             "precision": 0,
             "currency": null,
@@ -45,13 +38,11 @@
           "relation": null
         },
         {
-          "id": "5ba03048b51ec4dbc06d26d5",
           "name": "title",
           "displayName": "title",
           "description": null,
           "fieldType": "TEXT",
           "fieldTypeAttributes": {
-            "id": "5ba03048b51ec424206d26d6",
             "format": "UNFORMATTED",
             "fieldSize": 500
           },
@@ -62,13 +53,11 @@
           "relation": null
         },
         {
-          "id": "5ba03048b55ec4dbc06d26d5",
           "name": "description",
           "displayName": "Description",
           "description": null,
           "fieldType": "TEXT",
           "fieldTypeAttributes": {
-            "id": "5ba03048b55ec424206d26d6",
             "format": "UNFORMATTED",
             "fieldSize": 500
           },
@@ -79,13 +68,11 @@
           "relation": null
         },
         {
-          "id": "5ba03052b55ec4072a6d280c",
           "name": "sqFootage",
           "displayName": "Sq Footage",
           "description": null,
           "fieldType": "NUMBER",
           "fieldTypeAttributes": {
-            "id": "5ba03052b55ec4363f6d280d",
             "format": "NUMBER",
             "precision": 0,
             "currency": null,
@@ -99,13 +86,11 @@
           "relation": null
         },
         {
-          "id": "5ba0305bb55ec4dfe06d2945",
           "name": "bathrooms",
           "displayName": "Bathrooms",
           "description": null,
           "fieldType": "NUMBER",
           "fieldTypeAttributes": {
-            "id": "5ba0305bb55ec460116d2946",
             "format": "NUMBER",
             "precision": 0,
             "currency": null,
@@ -119,13 +104,11 @@
           "relation": null
         },
         {
-          "id": "5ba03073b55ec472776d2a80",
           "name": "garage",
           "displayName": "Garage",
           "description": null,
           "fieldType": "SWITCH",
           "fieldTypeAttributes": {
-            "id": "5ba03073b55ec41c1c6d2a81",
             "format": "YES_NO",
             "listOptions": null
           },
@@ -136,13 +119,11 @@
           "relation": null
         },
         {
-          "id": "5ba0307fb55ec4c4fb6d2bbd",
           "name": "pool",
           "displayName": "Pool",
           "description": null,
           "fieldType": "SWITCH",
           "fieldTypeAttributes": {
-            "id": "5ba0307fb55ec42f5f6d2bbe",
             "format": "YES_NO",
             "listOptions": null
           },
@@ -153,7 +134,6 @@
           "relation": null
         },
         {
-          "id": "5ba03794b55ec4a28c6d5878",
           "name": "listings",
           "displayName": "Listings",
           "description": null,
@@ -164,7 +144,6 @@
           "isUnique": null,
           "defaultValue": null,
           "relation": {
-            "id": "5ba03794b55ec412ba6d5879",
             "refFieldIsList": false,
             "refFieldIsRequired": false,
             "refFieldName": "property",
@@ -177,12 +156,10 @@
       ]
     },
     {
-      "id": "5ba03300b55ec4fa146d2cfc",
       "name": "Brokers",
       "displayName": "Brokers",
       "isSystem": false,
       "fields": [{
-          "id": "5ba03310b55ec4b9536d2ef3",
           "name": "user",
           "displayName": "User",
           "description": null,
@@ -193,7 +170,6 @@
           "isUnique": null,
           "defaultValue": null,
           "relation": {
-            "id": "5ba03310b55ec4299d6d2ef4",
             "refFieldIsList": true,
             "refFieldIsRequired": false,
             "refFieldName": "broker",
@@ -204,7 +180,6 @@
           }
         },
         {
-          "id": "5ba03785b55ec498a56d56f9",
           "name": "listings",
           "displayName": "Listings",
           "description": null,
@@ -215,7 +190,6 @@
           "isUnique": null,
           "defaultValue": null,
           "relation": {
-            "id": "5ba03785b55ec452ee6d56fa",
             "refFieldIsList": false,
             "refFieldIsRequired": false,
             "refFieldName": "broker",
@@ -228,12 +202,10 @@
       ]
     },
     {
-      "id": "5ba035bcb55ec478556d48b4",
       "name": "Customers",
       "displayName": "Customers",
       "isSystem": false,
       "fields": [{
-          "id": "5ba035c8b55ec4d01a6d4ac0",
           "name": "user",
           "displayName": "User",
           "description": null,
@@ -244,7 +216,6 @@
           "isUnique": null,
           "defaultValue": null,
           "relation": {
-            "id": "5ba035c8b55ec4ca026d4ac1",
             "refFieldIsList": true,
             "refFieldIsRequired": false,
             "refFieldName": "customer",
@@ -255,7 +226,6 @@
           }
         },
         {
-          "id": "5ba03726b55ec4e35a6d4fae",
           "name": "purchases",
           "displayName": "Purchases",
           "description": null,
@@ -266,7 +236,6 @@
           "isUnique": null,
           "defaultValue": null,
           "relation": {
-            "id": "5ba03726b55ec4d6c16d4faf",
             "refFieldIsList": false,
             "refFieldIsRequired": false,
             "refFieldName": "buyer",
@@ -277,7 +246,6 @@
           }
         },
         {
-          "id": "5ba03735b55ec480436d511f",
           "name": "sales",
           "displayName": "Sales",
           "description": null,
@@ -288,7 +256,6 @@
           "isUnique": null,
           "defaultValue": null,
           "relation": {
-            "id": "5ba03735b55ec4620d6d5120",
             "refFieldIsList": false,
             "refFieldIsRequired": false,
             "refFieldName": "seller",
@@ -301,21 +268,16 @@
       ]
     },
     {
-      "id": "5ba036feb55ec419ad6d4c1d",
       "name": "Listings",
       "displayName": "Listings",
       "isSystem": false,
       "fields": [{
-          "id": "5ba0370eb55ec41e2f6d4e3e",
           "name": "documents",
           "displayName": "Documents",
           "description": null,
           "fieldType": "FILE",
           "fieldTypeAttributes": {
-            "id": "5ba0370eb55ec409b06d4e3f",
             "format": "FILE",
-            "showTitle": null,
-            "showUrl": null,
             "maxSize": null,
             "typeRestrictions": null
           },
@@ -326,7 +288,6 @@
           "relation": null
         },
         {
-          "id": "5ba03726b55ec49a106d4fac",
           "name": "buyer",
           "displayName": "Buyer",
           "description": null,
@@ -337,7 +298,6 @@
           "isUnique": null,
           "defaultValue": null,
           "relation": {
-            "id": "5ba03726b55ec461df6d4fad",
             "refFieldIsList": true,
             "refFieldIsRequired": false,
             "refFieldName": "purchases",
@@ -348,7 +308,6 @@
           }
         },
         {
-          "id": "5ba03735b55ec4e8326d511d",
           "name": "seller",
           "displayName": "Seller",
           "description": null,
@@ -359,7 +318,6 @@
           "isUnique": null,
           "defaultValue": null,
           "relation": {
-            "id": "5ba03735b55ec46e726d511e",
             "refFieldIsList": true,
             "refFieldIsRequired": false,
             "refFieldName": "sales",
@@ -370,13 +328,11 @@
           }
         },
         {
-          "id": "5ba03763b55ec43fe66d5292",
           "name": "status",
           "displayName": "Status",
           "description": null,
           "fieldType": "SWITCH",
           "fieldTypeAttributes": {
-            "id": "5ba03763b55ec42ee16d5293",
             "format": "CUSTOM",
             "listOptions": [
               "Lead",
@@ -393,13 +349,11 @@
           "relation": null
         },
         {
-          "id": "5ba03770b55ec437556d5407",
           "name": "closingDate",
           "displayName": "Closing Date",
           "description": null,
           "fieldType": "DATE",
           "fieldTypeAttributes": {
-            "id": "5ba03770b55ec47e6a6d5408",
             "format": "DATE"
           },
           "isList": false,
@@ -409,13 +363,11 @@
           "relation": null
         },
         {
-          "id": "5ba0377ab55ec4fa906d557e",
           "name": "price",
           "displayName": "Price",
           "description": null,
           "fieldType": "NUMBER",
           "fieldTypeAttributes": {
-            "id": "5ba0377ab55ec45a736d557f",
             "format": "NUMBER",
             "precision": 2,
             "currency": null,
@@ -429,7 +381,6 @@
           "relation": null
         },
         {
-          "id": "5ba03785b55ec4246d6d56f7",
           "name": "broker",
           "displayName": "Broker",
           "description": null,
@@ -440,7 +391,6 @@
           "isUnique": null,
           "defaultValue": null,
           "relation": {
-            "id": "5ba03785b55ec4642e6d56f8",
             "refFieldIsList": true,
             "refFieldIsRequired": false,
             "refFieldName": "listings",
@@ -451,7 +401,6 @@
           }
         },
         {
-          "id": "5ba03794b55ec443486d5876",
           "name": "property",
           "displayName": "Property",
           "description": null,
@@ -462,7 +411,6 @@
           "isUnique": null,
           "defaultValue": null,
           "relation": {
-            "id": "5ba03794b55ec4d7d46d5877",
             "refFieldIsList": true,
             "refFieldIsRequired": false,
             "refFieldName": "listings",
