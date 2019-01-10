@@ -28,7 +28,7 @@ class UserDropdown extends React.Component {
     }
 
     return (
-      <Dropdown.Plate defaultOpen={false}>
+      <Dropdown defaultOpen={false}>
         <Dropdown.Head>
           <Avatar
             src={R.path(['user', 'avatar', 'downloadUrl'], data)}
@@ -38,7 +38,7 @@ class UserDropdown extends React.Component {
         </Dropdown.Head>
         <Dropdown.Body pin="right">
           {({ closeDropdown }) => (
-            <Menu.Plate>
+            <Menu>
               <Menu.Item
                 onClick={() => {
                   this.props.logOut({ returnTo: `${window.location.origin}/auth` });
@@ -47,10 +47,10 @@ class UserDropdown extends React.Component {
               >
                 Log Out
               </Menu.Item>
-            </Menu.Plate>
+            </Menu>
           )}
         </Dropdown.Body>
-      </Dropdown.Plate>
+      </Dropdown>
     );
   };
 

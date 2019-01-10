@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'recompose';
 import * as R from 'ramda';
-import { Table, Button, Dropdown, Icon, Menu, withModal } from '@8base/boost';
+import { Table, Dropdown, Icon, Menu, withModal } from '@8base/boost';
 import { graphql } from 'react-apollo';
 
 import * as sharedGraphQL from 'shared/graphql';
@@ -10,7 +10,7 @@ import { CustomerCreateDialog } from './CustomerCreateDialog';
 import { CustomerDeleteDialog } from './CustomerDeleteDialog';
 
 let CustomersTable = ({ customers, openModal, closeModal }) => (
-  <Table.Plate>
+  <Table>
     <Table.Header columns="repeat(5, 1fr) 60px">
       <Table.HeaderCell>First Name</Table.HeaderCell>
       <Table.HeaderCell>Last Name</Table.HeaderCell>
@@ -20,7 +20,7 @@ let CustomersTable = ({ customers, openModal, closeModal }) => (
       <Table.HeaderCell />
     </Table.Header>
 
-    <Table.Body loading={ customers.loading } data={ R.pathOr([], ['customersList', 'items'], customers) }>
+    <Table.Body loading={ customers.loading } data={ R.pathOr([], ['customersList', 'items'], customers) } action="Create Customer" onActionClick={() => openModal(CustomerCreateDialog.id)}>
       {
         (customer) => (
           <Table.BodyRow columns="repeat(5, 1fr) 60px" key={ customer.id }>
@@ -40,29 +40,26 @@ let CustomersTable = ({ customers, openModal, closeModal }) => (
               { R.pathOr(0, ['sales', 'count'], customer) }
             </Table.BodyCell>
             <Table.BodyCell>
-              <Dropdown.Plate defaultOpen={ false }>
+              <Dropdown defaultOpen={ false }>
                 <Dropdown.Head>
-                  <Icon name="Dots" color="LIGHT_GRAY2" />
+                  <Icon name="Dots" size="sm" color="LIGHT_GRAY2" />
                 </Dropdown.Head>
                 <Dropdown.Body pin="right">
                   {
                     ({ closeDropdown }) => (
-                      <Menu.Plate>
+                      <Menu>
                         <Menu.Item onClick={ () => { openModal(CustomerDeleteDialog.id, { id: customer.id }); closeDropdown(); } }>Delete</Menu.Item>
-                      </Menu.Plate>
+                      </Menu>
                     )
                   }
                 </Dropdown.Body>
-              </Dropdown.Plate>
+              </Dropdown>
             </Table.BodyCell>
           </Table.BodyRow>
         )
       }
     </Table.Body>
-    <Table.Footer justifyContent="center">
-      <Button onClick={ () => openModal(CustomerCreateDialog.id) }>Create Customer</Button>
-    </Table.Footer>
-  </Table.Plate>
+  </Table>
 );
 
 CustomersTable = compose(

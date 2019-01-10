@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'recompose';
 import * as R from 'ramda';
-import { Table, Button, Dropdown, Icon, Menu, withModal } from '@8base/boost';
+import { Table, Dropdown, Icon, Menu, withModal } from '@8base/boost';
 import { graphql } from 'react-apollo';
 
 import * as sharedGraphQL from 'shared/graphql';
@@ -10,7 +10,7 @@ import { BrokerCreateDialog } from './BrokerCreateDialog';
 import { BrokerDeleteDialog } from './BrokerDeleteDialog';
 
 let BrokersTable = ({ brokers, openModal, closeModal }) => (
-  <Table.Plate>
+  <Table>
     <Table.Header columns="repeat(4, 1fr) 60px">
       <Table.HeaderCell>First Name</Table.HeaderCell>
       <Table.HeaderCell>Last Name</Table.HeaderCell>
@@ -19,7 +19,7 @@ let BrokersTable = ({ brokers, openModal, closeModal }) => (
       <Table.HeaderCell />
     </Table.Header>
 
-    <Table.Body loading={ brokers.loading } data={ R.pathOr([], ['brokersList', 'items'], brokers) }>
+    <Table.Body loading={ brokers.loading } data={ R.pathOr([], ['brokersList', 'items'], brokers) }  action="Create Broker" onActionClick={() => openModal(BrokerCreateDialog.id)}>
       {
         (broker) => (
           <Table.BodyRow columns="repeat(4, 1fr) 60px" key={ broker.id }>
@@ -36,29 +36,26 @@ let BrokersTable = ({ brokers, openModal, closeModal }) => (
               { R.pathOr(0, ['listings', 'count'], broker) }
             </Table.BodyCell>
             <Table.BodyCell>
-              <Dropdown.Plate defaultOpen={ false }>
+              <Dropdown defaultOpen={ false }>
                 <Dropdown.Head>
-                  <Icon name="Dots" color="LIGHT_GRAY2" />
+                  <Icon name="Dots" size="sm" color="LIGHT_GRAY2" />
                 </Dropdown.Head>
                 <Dropdown.Body pin="right">
                   {
                     ({ closeDropdown }) => (
-                      <Menu.Plate>
+                      <Menu>
                         <Menu.Item onClick={ () => { openModal(BrokerDeleteDialog.id, { id: broker.id }); closeDropdown(); } }>Delete</Menu.Item>
-                      </Menu.Plate>
+                      </Menu>
                     )
                   }
                 </Dropdown.Body>
-              </Dropdown.Plate>
+              </Dropdown>
             </Table.BodyCell>
           </Table.BodyRow>
         )
       }
     </Table.Body>
-    <Table.Footer justifyContent="center">
-      <Button onClick={ () => openModal(BrokerCreateDialog.id) }>Create Broker</Button>
-    </Table.Footer>
-  </Table.Plate>
+  </Table>
 );
 
 BrokersTable = compose(

@@ -56,18 +56,18 @@ class PropertyCreateDialog extends React.Component {
       </Dialog.Body>
       <Dialog.Footer>
         <Button color="neutral" variant="outlined" disabled={ submitting } onClick={ this.onClose }>Cancel</Button>
-        <Button color="red" type="submit" text="Create Property" loading={ submitting } />
+        <Button color="primary" type="submit" loading={ submitting }>Create Property</Button>
       </Dialog.Footer>
     </form>
   );
 
   render() {
     return (
-      <Dialog.Plate id={ PROPERTY_CREATE_DIALOG_ID } size="sm">
+      <Dialog id={ PROPERTY_CREATE_DIALOG_ID } size="sm">
         <Form type="CREATE" tableSchemaName="Properties" onSubmit={ this.onSubmit }>
           { this.renderFormContent }
         </Form>
-      </Dialog.Plate>
+      </Dialog>
     );
   }
 }

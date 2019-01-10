@@ -30,7 +30,7 @@ class ListingDeleteDialog extends React.Component {
       </Dialog.Body>
       <Dialog.Footer>
         <Button color="neutral" variant="outlined" disabled={ submitting } onClick={ this.onClose }>Cancel</Button>
-        <Button color="red" type="submit" text="Delete Listing" disabled={ invalid } loading={ submitting } />
+        <Button color="danger" type="submit" disabled={ invalid } loading={ submitting }>Delete Listing</Button>
       </Dialog.Footer>
     </form>
   );
@@ -45,9 +45,9 @@ class ListingDeleteDialog extends React.Component {
 
   render() {
     return (
-      <Dialog.Plate id={ LISTING_DELETE_DIALOG_ID } size="sm">
+      <Dialog id={ LISTING_DELETE_DIALOG_ID } size="sm">
         { this.renderContent }
-      </Dialog.Plate>
+      </Dialog>
     );
   }
 }

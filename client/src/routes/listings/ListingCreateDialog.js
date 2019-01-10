@@ -127,18 +127,18 @@ class ListingCreateDialog extends React.Component {
       </Dialog.Body>
       <Dialog.Footer>
         <Button color="neutral" variant="outlined" disabled={ submitting } onClick={ this.onClose }>Cancel</Button>
-        <Button color="red" type="submit" text="Create Listing" loading={ submitting } />
+        <Button color="primary" type="submit" loading={ submitting }>Create Listing</Button>
       </Dialog.Footer>
     </form>
   );
 
   render() {
     return (
-      <Dialog.Plate id={ LISTING_CREATE_DIALOG_ID } size="sm">
+      <Dialog id={ LISTING_CREATE_DIALOG_ID } size="sm">
         <Form type="CREATE" tableSchemaName="Listings" onSubmit={ this.onSubmit }>
           { this.renderFormContent }
         </Form>
-      </Dialog.Plate>
+      </Dialog>
     );
   }
 }

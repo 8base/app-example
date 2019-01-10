@@ -8,7 +8,7 @@ import { ListingDeleteDialog } from './ListingDeleteDialog';
 import { ListingsTable } from './ListingsTable';
 
 const Listings = () => (
-  <Card.Plate padding="md" stretch>
+  <Card padding="md" stretch>
     <Card.Header>
       <Heading type="h4" text="Listings" />
     </Card.Header>
@@ -21,7 +21,7 @@ const Listings = () => (
     <Card.Body padding="none" stretch>
       <ListingsTable />
     </Card.Body>
-  </Card.Plate>
+  </Card>
 );
 
 export { Listings };

@@ -58,7 +58,7 @@ class PropertyEditDialog extends React.Component {
       </Dialog.Body>
       <Dialog.Footer>
         <Button color="neutral" variant="outlined" disabled={ submitting } onClick={ this.onClose }>Cancel</Button>
-        <Button color="red" type="submit" text="Update Property" disabled={ pristine || invalid } loading={ submitting } />
+        <Button color="primary" type="submit" disabled={ pristine || invalid } loading={ submitting }>Update Property</Button>
       </Dialog.Footer>
     </form>
   );
@@ -73,9 +73,9 @@ class PropertyEditDialog extends React.Component {
 
   render() {
     return (
-      <Dialog.Plate id={ PROPERTY_EDIT_DIALOG_ID } size="sm">
+      <Dialog id={ PROPERTY_EDIT_DIALOG_ID } size="sm">
         { this.renderForm }
-      </Dialog.Plate>
+      </Dialog>
     );
   }
 }

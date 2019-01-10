@@ -6,7 +6,7 @@ import { BrokerDeleteDialog } from './BrokerDeleteDialog';
 import { BrokersTable } from './BrokersTable';
 
 const Brokers = ({ brokers, openModal, closeModal }) => (
-  <Card.Plate padding="md" stretch>
+  <Card padding="md" stretch>
     <Card.Header>
       <Heading type="h4" text="Brokers" />
     </Card.Header>
@@ -17,7 +17,7 @@ const Brokers = ({ brokers, openModal, closeModal }) => (
     <Card.Body padding="none" stretch>
       <BrokersTable />
     </Card.Body>
-  </Card.Plate>
+  </Card>
 );
 
 export { Brokers };

@@ -34,7 +34,7 @@ class ListingShareDialog extends React.Component {
       </Dialog.Body>
       <Dialog.Footer>
         <Button color="neutral" variant="outlined" disabled={ submitting } onClick={ this.onClose }>Cancel</Button>
-        <Button color="red" type="submit" text="Share Listing" disabled={ pristine || invalid } loading={ submitting } />
+        <Button color="primary" type="submit" disabled={ pristine || invalid } loading={ submitting }>Share Listing</Button>
       </Dialog.Footer>
     </form>
   );
@@ -49,9 +49,9 @@ class ListingShareDialog extends React.Component {
 
   render() {
     return (
-      <Dialog.Plate id={ LISTING_SHARE_DIALOG_ID } size="sm">
+      <Dialog id={ LISTING_SHARE_DIALOG_ID } size="sm">
         {this.renderForm}
-      </Dialog.Plate>
+      </Dialog>
     );
   }
 }

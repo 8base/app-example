@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'recompose';
 import * as R from 'ramda';
-import { Paper, Link, Table, Button, Dropdown, Icon, Menu, withModal } from '@8base/boost';
+import { Paper, Link, Table, Dropdown, Icon, Menu, withModal } from '@8base/boost';
 import { graphql } from 'react-apollo';
 import { DateTime } from 'luxon';
 
@@ -13,7 +13,7 @@ import { ListingShareDialog } from './ListingShareDialog';
 import { ListingDeleteDialog } from './ListingDeleteDialog';
 
 let ListingsTable = ({ listings, openModal, closeModal }) => (
-  <Table.Plate>
+  <Table>
     <Table.Header columns="repeat(10, 1fr) 60px">
       <Table.HeaderCell>Property</Table.HeaderCell>
       <Table.HeaderCell>Broker</Table.HeaderCell>
@@ -28,7 +28,7 @@ let ListingsTable = ({ listings, openModal, closeModal }) => (
       <Table.HeaderCell />
     </Table.Header>
 
-    <Table.Body loading={ listings.loading } data={ R.pathOr([], ['listingsList', 'items'], listings) }>
+    <Table.Body loading={ listings.loading } data={ R.pathOr([], ['listingsList', 'items'], listings) } action="Create Listing" onActionClick={() => openModal(ListingCreateDialog.id)}>
       {
         (listing) => (
           <Table.BodyRow columns="repeat(10, 1fr) 60px" key={ listing.id }>
@@ -63,7 +63,7 @@ let ListingsTable = ({ listings, openModal, closeModal }) => (
               { DateTime.fromISO(listing.updatedAt).toFormat('ff') }
             </Table.BodyCell>
             <Table.BodyCell>
-              <Dropdown.Plate defaultOpen={ false }>
+              <Dropdown defaultOpen={ false }>
                 <Dropdown.Head>
                   { listing.documents.items.length } documents
                 </Dropdown.Head>
@@ -74,37 +74,34 @@ let ListingsTable = ({ listings, openModal, closeModal }) => (
                     }
                   </Paper>
                 </Dropdown.Body>
-              </Dropdown.Plate>
+              </Dropdown>
             </Table.BodyCell>
             <Table.BodyCell>
               { listing.price }
             </Table.BodyCell>
             <Table.BodyCell>
-              <Dropdown.Plate defaultOpen={ false }>
+              <Dropdown defaultOpen={ false }>
                 <Dropdown.Head>
-                  <Icon name="Dots" color="LIGHT_GRAY2" />
+                  <Icon name="Dots" size="sm" color="LIGHT_GRAY2" />
                 </Dropdown.Head>
                 <Dropdown.Body pin="right">
                   {
                     ({ closeDropdown }) => (
-                      <Menu.Plate>
+                      <Menu>
                         <Menu.Item onClick={ () => { openModal(ListingEditDialog.id, {  initialValues: listing }); closeDropdown(); } }>Edit</Menu.Item>
                         <Menu.Item onClick={ () => { openModal(ListingShareDialog.id, { id: listing.id }); closeDropdown(); } }>Share</Menu.Item>
                         <Menu.Item onClick={ () => { openModal(ListingDeleteDialog.id, { id: listing.id }); closeDropdown(); } }>Delete</Menu.Item>
-                      </Menu.Plate>
+                      </Menu>
                     )
                   }
                 </Dropdown.Body>
-              </Dropdown.Plate>
+              </Dropdown>
             </Table.BodyCell>
           </Table.BodyRow>
         )
       }
     </Table.Body>
-    <Table.Footer justifyContent="center">
-      <Button onClick={ () => openModal(ListingCreateDialog.id) }>Create Listing</Button>
-    </Table.Footer>
-  </Table.Plate>
+  </Table>
 );
 
 ListingsTable = compose(

@@ -47,18 +47,18 @@ class CustomerCreateDialog extends React.Component {
       </Dialog.Body>
       <Dialog.Footer>
         <Button color="neutral" variant="outlined" disabled={ submitting } onClick={ this.onClose }>Cancel</Button>
-        <Button color="red" type="submit" text="Create Customer" loading={ submitting } />
+        <Button color="primary" type="submit" loading={ submitting }>Create Customer</Button>
       </Dialog.Footer>
     </form>
   );
 
   render() {
     return (
-      <Dialog.Plate id={ CUSTOMER_CREATE_DIALOG_ID } size="sm">
+      <Dialog id={ CUSTOMER_CREATE_DIALOG_ID } size="sm">
         <Form type="CREATE" tableSchemaName="Customers" onSubmit={ this.onSubmit }>
           { this.renderFormContent }
         </Form>
-      </Dialog.Plate>
+      </Dialog>
     );
   }
 }

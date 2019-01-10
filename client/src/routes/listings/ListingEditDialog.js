@@ -126,7 +126,7 @@ class ListingEditDialog extends React.Component {
       </Dialog.Body>
       <Dialog.Footer>
         <Button color="neutral" variant="outlined" disabled={ submitting } onClick={ this.onClose }>Cancel</Button>
-        <Button color="red" type="submit" text="Update Listing" disabled={ pristine || invalid } loading={ submitting } />
+        <Button color="primary" type="submit" disabled={ pristine || invalid } loading={ submitting }>Update Listing</Button>
       </Dialog.Footer>
     </form>
   );
@@ -141,9 +141,9 @@ class ListingEditDialog extends React.Component {
 
   render() {
     return (
-      <Dialog.Plate id={ LISTING_EDIT_DIALOG_ID } size="sm">
+      <Dialog id={ LISTING_EDIT_DIALOG_ID } size="sm">
         { this.renderForm }
-      </Dialog.Plate>
+      </Dialog>
     );
   }
 }

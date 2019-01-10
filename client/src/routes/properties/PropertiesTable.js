@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'recompose';
 import * as R from 'ramda';
-import { Table, Button, Dropdown, Icon, Menu, withModal } from '@8base/boost';
+import { Table, Dropdown, Icon, Menu, withModal } from '@8base/boost';
 import { graphql } from 'react-apollo';
 import { DateTime } from 'luxon';
 
@@ -12,7 +12,7 @@ import { PropertyEditDialog } from './PropertyEditDialog';
 import { PropertyDeleteDialog } from './PropertyDeleteDialog';
 
 let PropertiesTable = ({ properties, openModal, closeModal }) => (
-  <Table.Plate>
+  <Table>
     <Table.Header columns="repeat(10, 1fr) 60px">
       <Table.HeaderCell>Pictures</Table.HeaderCell>
       <Table.HeaderCell>Name</Table.HeaderCell>
@@ -27,7 +27,7 @@ let PropertiesTable = ({ properties, openModal, closeModal }) => (
       <Table.HeaderCell />
     </Table.Header>
 
-    <Table.Body loading={ properties.loading } data={ R.pathOr([], ['propertiesList', 'items'], properties) }>
+    <Table.Body loading={ properties.loading } data={ R.pathOr([], ['propertiesList', 'items'], properties) } action="Create Property" onActionClick={() => openModal(PropertyCreateDialog.id)}>
       {
         (property) => (
           <Table.BodyRow columns="repeat(10, 1fr) 60px" key={ property.id }>
@@ -62,30 +62,27 @@ let PropertiesTable = ({ properties, openModal, closeModal }) => (
               { `${property.pool}` }
             </Table.BodyCell>
             <Table.BodyCell>
-              <Dropdown.Plate defaultOpen={ false }>
+              <Dropdown defaultOpen={ false }>
                 <Dropdown.Head>
-                  <Icon name="Dots" color="LIGHT_GRAY2" />
+                  <Icon name="Dots" size="sm" color="LIGHT_GRAY2" />
                 </Dropdown.Head>
                 <Dropdown.Body pin="right">
                   {
                     ({ closeDropdown }) => (
-                      <Menu.Plate>
+                      <Menu>
                         <Menu.Item onClick={ () => { openModal(PropertyEditDialog.id, { initialValues: property }); closeDropdown(); } }>Edit</Menu.Item>
                         <Menu.Item onClick={ () => { openModal(PropertyDeleteDialog.id, { id: property.id }); closeDropdown(); } }>Delete</Menu.Item>
-                      </Menu.Plate>
+                      </Menu>
                     )
                   }
                 </Dropdown.Body>
-              </Dropdown.Plate>
+              </Dropdown>
             </Table.BodyCell>
           </Table.BodyRow>
         )
       }
     </Table.Body>
-    <Table.Footer justifyContent="center">
-      <Button onClick={ () => openModal(PropertyCreateDialog.id) }>Create Property</Button>
-    </Table.Footer>
-  </Table.Plate>
+  </Table>
 );
 
 PropertiesTable = compose(

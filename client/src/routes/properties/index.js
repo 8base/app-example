@@ -7,7 +7,7 @@ import { PropertyDeleteDialog } from './PropertyDeleteDialog';
 import { PropertiesTable } from './PropertiesTable';
 
 const Properties = () => (
-  <Card.Plate padding="md" stretch>
+  <Card padding="md" stretch>
     <Card.Header>
       <Heading type="h4" text="Properties" />
     </Card.Header>
@@ -19,7 +19,7 @@ const Properties = () => (
     <Card.Body padding="none" stretch>
       <PropertiesTable />
     </Card.Body>
-  </Card.Plate>
+  </Card>
 );
 
 export { Properties };

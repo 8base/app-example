@@ -47,18 +47,18 @@ class BrokerCreateDialog extends React.Component {
       </Dialog.Body>
       <Dialog.Footer>
         <Button color="neutral" variant="outlined" disabled={ submitting } onClick={ this.onClose }>Cancel</Button>
-        <Button color="red" type="submit" text="Create Broker" loading={ submitting } />
+        <Button color="primary" type="submit" loading={ submitting }>Create Broker</Button>
       </Dialog.Footer>
     </form>
   );
 
   render() {
     return (
-      <Dialog.Plate id={ BROKER_CREATE_DIALOG_ID } size="sm">
+      <Dialog id={ BROKER_CREATE_DIALOG_ID } size="sm">
         <Form type="CREATE" tableSchemaName="Brokers" onSubmit={ this.onSubmit }>
           { this.renderFormContent }
         </Form>
-      </Dialog.Plate>
+      </Dialog>
     );
   }
 }
