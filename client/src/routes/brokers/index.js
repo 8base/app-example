@@ -5,7 +5,7 @@ import { BrokerCreateDialog } from './BrokerCreateDialog';
 import { BrokerDeleteDialog } from './BrokerDeleteDialog';
 import { BrokersTable } from './BrokersTable';
 
-const Brokers = ({ brokers, openModal, closeModal }) => (
+const Brokers = () => (
   <Card padding="md" stretch>
     <Card.Header>
       <Heading type="h4" text="Brokers" />
