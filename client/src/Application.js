@@ -63,6 +63,16 @@ class Application extends React.PureComponent {
     }
   };
 
+  onRequestError = ({ graphQLErrors }) => {
+    const hasGraphQLErrors = Array.isArray(graphQLErrors) && graphQLErrors.length > 0;
+
+    if (hasGraphQLErrors) {
+      graphQLErrors.forEach(error => {
+        toast.error(error.message);
+      });
+    }
+  };
+
   render() {
     return (
       <BrowserRouter>
@@ -71,6 +81,7 @@ class Application extends React.PureComponent {
             uri={REACT_APP_8BASE_API_ENDPOINT}
             authClient={auth0WebClient}
             onRequestSuccess={this.onRequestSuccess}
+            onRequestError={this.onRequestError}
           >
             {this.renderContent}
           </EightBaseAppProvider>
