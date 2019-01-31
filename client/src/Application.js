@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { Auth0WebClient } from '@8base/auth';
+import { WebAuth0AuthClient } from '@8base/web-auth0-auth-client';
 import { EightBaseAppProvider } from '@8base/app-provider';
 import { EightBaseBoostProvider, AsyncContent } from '@8base/boost';
 import { ToastContainer, toast } from 'react-toastify';
@@ -20,9 +20,9 @@ const { REACT_APP_8BASE_API_ENDPOINT } = process.env;
 const AUTH_CLIENT_ID = 'qGHZVu5CxY5klivm28OPLjopvsYp0baD';
 const AUTH_DOMAIN = 'auth.8base.com';
 
-const auth0WebClient = new Auth0WebClient({
+const auth0WebClient = new WebAuth0AuthClient({
   domain: AUTH_DOMAIN,
-  clientID: AUTH_CLIENT_ID,
+  clientId: AUTH_CLIENT_ID,
   redirectUri: `${window.location.origin}/auth/callback`,
   logoutRedirectUri: `${window.location.origin}/auth`,
 });
