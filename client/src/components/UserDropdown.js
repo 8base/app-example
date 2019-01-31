@@ -3,7 +3,7 @@ import { compose } from 'recompose';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Dropdown, Menu, Avatar } from '@8base/boost';
-import { withLogOut } from '@8base/auth';
+import { withLogout } from '@8base/auth';
 import * as R from 'ramda';
 
 const USER_QUERY = gql`
@@ -59,6 +59,6 @@ class UserDropdown extends React.Component {
   }
 }
 
-UserDropdown = compose(withLogOut)(UserDropdown);
+UserDropdown = compose(withLogout)(UserDropdown);
 
 export { UserDropdown };
