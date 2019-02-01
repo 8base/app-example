@@ -16,7 +16,7 @@ const Properties = () => (
     <PropertyEditDialog />
     <PropertyDeleteDialog />
 
-    <Card.Body padding="none" stretch>
+    <Card.Body padding="none" stretch scrollable>
       <PropertiesTable />
     </Card.Body>
   </Card>
