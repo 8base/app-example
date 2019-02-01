@@ -40,8 +40,8 @@ class UserDropdown extends React.Component {
           {({ closeDropdown }) => (
             <Menu>
               <Menu.Item
-                onClick={() => {
-                  this.props.logOut({ returnTo: `${window.location.origin}/auth` });
+                onClick={async () => {
+                  await this.props.logout();
                   closeDropdown();
                 }}
               >

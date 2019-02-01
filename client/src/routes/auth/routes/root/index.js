@@ -3,10 +3,10 @@ import { Loader } from '@8base/boost';
 import { withAuth } from '@8base/auth';
 
 class AuthContainer extends React.Component {
-  componentDidMount() {
+  async componentDidMount() {
     const { auth } = this.props;
 
-    auth.authorize({ mode: 'login' });
+    await auth.authorize({ mode: 'login' });
   }
 
   render() {
