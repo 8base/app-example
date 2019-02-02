@@ -1,6 +1,5 @@
 import React from 'react';
 import { compose } from 'recompose';
-import * as R from 'ramda';
 import { Table, Dropdown, Icon, Menu, withModal } from '@8base/boost';
 import { graphql } from 'react-apollo';
 import { DateTime } from 'luxon';
@@ -27,7 +26,7 @@ let PropertiesTable = ({ properties, openModal, closeModal }) => (
       <Table.HeaderCell />
     </Table.Header>
 
-    <Table.Body loading={ properties.loading } data={ R.pathOr([], ['propertiesList', 'items'], properties) } action="Create Property" onActionClick={() => openModal(PropertyCreateDialog.id)}>
+    <Table.Body loading={ properties.loading } data={ properties } action="Create Property" onActionClick={() => openModal(PropertyCreateDialog.id)}>
       {
         (property) => (
           <Table.BodyRow columns="repeat(10, 1fr) 60px" key={ property.id }>
@@ -87,7 +86,13 @@ let PropertiesTable = ({ properties, openModal, closeModal }) => (
 
 PropertiesTable = compose(
   withModal,
-  graphql(sharedGraphQL.PROPERTIES_LIST_QUERY, { name: 'properties' }),
+  graphql(sharedGraphQL.PROPERTIES_LIST_QUERY, {
+    props: ({ data: { propertiesList: ({ items } = {}) } }) => {
+      return {
+        properties: items || []
+      };
+    },
+  }),
 )(PropertiesTable);
 
 export { PropertiesTable };
