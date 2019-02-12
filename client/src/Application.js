@@ -17,14 +17,16 @@ import { Listings } from './routes/listings';
 
 const { REACT_APP_8BASE_API_ENDPOINT } = process.env;
 
-const AUTH_CLIENT_ID = 'qGHZVu5CxY5klivm28OPLjopvsYp0baD';
-const AUTH_DOMAIN = 'auth.8base.com';
+const AUTH_CLIENT_ID = 'dQTPYT6ZmUl9kq8o30ajsAM14Gi8D7gL';
+const AUTH_DOMAIN = 'dev-vorobeez.auth0.com';
 
 const auth0WebClient = new WebAuth0AuthClient({
   domain: AUTH_DOMAIN,
   clientId: AUTH_CLIENT_ID,
   redirectUri: `${window.location.origin}/auth/callback`,
   logoutRedirectUri: `${window.location.origin}/auth`,
+  workspaceId: 'cjs0it8t6000d01qsr5k0drzy',
+  profileId: 'cjs1t7ba6000s01ryxsfpx95w',
 });
 
 class Application extends React.PureComponent {
