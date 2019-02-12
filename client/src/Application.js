@@ -17,16 +17,22 @@ import { Listings } from './routes/listings';
 
 const { REACT_APP_8BASE_API_ENDPOINT } = process.env;
 
-const AUTH_CLIENT_ID = 'dQTPYT6ZmUl9kq8o30ajsAM14Gi8D7gL';
-const AUTH_DOMAIN = 'dev-vorobeez.auth0.com';
+const AUTH_CLIENT_ID = 'lJDVb8s0468eDLucm9bxHGhoTm2DJPfA';
+const AUTH_DOMAIN = '8base-dev.auth0.com';
+const WORKSPACE_ID = 'cjs0it8t6000d01qsr5k0drzy';
+const PROFILE_ID = 'cjs1wzps9000201ry88qfjq3d';
 
 const auth0WebClient = new WebAuth0AuthClient({
   domain: AUTH_DOMAIN,
   clientId: AUTH_CLIENT_ID,
   redirectUri: `${window.location.origin}/auth/callback`,
   logoutRedirectUri: `${window.location.origin}/auth`,
-  workspaceId: 'cjs0it8t6000d01qsr5k0drzy',
-  profileId: 'cjs1t7ba6000s01ryxsfpx95w',
+  workspaceId: WORKSPACE_ID,
+  profile: {
+    id: PROFILE_ID,
+    isDefault: true,
+  },
+  apiEndpoint: 'https://prestaging-api.8basedev.com/',
 });
 
 class Application extends React.PureComponent {
