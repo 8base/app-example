@@ -8,7 +8,7 @@ export const FileInputField = ({ input, meta, maxFiles, label, ...rest }) => (
       {
         ({ pick, value }) => (
           <Row stretch alignItems="center">
-            <Button type="button" onClick={ pick } stretch color="neutral">Choose Files</Button>
+            <Button type="button" onClick={ () => { pick(); } } stretch color="neutral">Choose Files</Button>
             <Text size="sm" style={{ whiteSpace: 'nowrap' }}>
               { value ? (Array.isArray(value) ? `${value.length} files selected` : value.filename) : 'No files selected' }
             </Text>
