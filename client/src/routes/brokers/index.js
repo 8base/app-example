@@ -14,7 +14,7 @@ const Brokers = () => (
     <BrokerCreateDialog />
     <BrokerDeleteDialog />
 
-    <Card.Body padding="none" stretch>
+    <Card.Body padding="none" stretch scrollable>
       <BrokersTable />
     </Card.Body>
   </Card>

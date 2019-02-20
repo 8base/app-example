@@ -14,7 +14,7 @@ const Customers = () => (
     <CustomerCreateDialog />
     <CustomerDeleteDialog />
 
-    <Card.Body padding="none" stretch>
+    <Card.Body padding="none" stretch scrollable>
       <CustomersTable />
     </Card.Body>
   </Card>

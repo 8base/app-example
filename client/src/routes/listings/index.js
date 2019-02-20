@@ -18,7 +18,7 @@ const Listings = () => (
     <ListingShareDialog />
     <ListingDeleteDialog />
 
-    <Card.Body padding="none" stretch>
+    <Card.Body padding="none" stretch scrollable>
       <ListingsTable />
     </Card.Body>
   </Card>
