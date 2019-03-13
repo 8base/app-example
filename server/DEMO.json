@@ -549,7 +549,7 @@
     "Properties": [{
       "$id": "property-1",
       "pictures": [{
-        "fileId": "4t6usZX5Tc6QyA2GisXA",
+        "url": "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg",
         "public": true,
         "filename": "house.jpeg"
       }],
@@ -566,7 +566,7 @@
     }, {
       "$id": "property-2",
       "pictures": [{
-        "fileId": "B52KS1elSayC3Pqnp3fF",
+        "url": "https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg",
         "public": true,
         "filename": "house.jpeg"
       }],
@@ -583,7 +583,7 @@
     }, {
       "$id": "property-3",
       "pictures": [{
-        "fileId": "0yiwgS31RzCMWgI0s0eM",
+        "url": "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg",
         "public": true,
         "filename": "house.jpeg"
       }],
@@ -600,7 +600,7 @@
     }, {
       "$id": "property-4",
       "pictures": [{
-        "fileId": "trI35UwRw6eQ03FztmBb",
+        "url": "https://images.pexels.com/photos/259600/pexels-photo-259600.jpeg",
         "public": true,
         "filename": "house.jpeg"
       }],
@@ -617,7 +617,7 @@
     }, {
       "$id": "property-5",
       "pictures": [{
-        "fileId": "LgJDMmuMRwqHVtPOULFt",
+        "url": "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg",
         "public": true,
         "filename": "house.jpeg"
       }],
@@ -634,7 +634,7 @@
     }, {
       "$id": "property-6",
       "pictures": [{
-        "fileId": "PAB7ltMBRFCCebW5j2Wp",
+        "url": "https://images.pexels.com/photos/1569003/pexels-photo-1569003.jpeg",
         "public": true,
         "filename": "house.jpeg"
       }],
@@ -651,7 +651,7 @@
     }, {
       "$id": "property-7",
       "pictures": [{
-        "fileId": "c7SDtuK0TdOJEHnlOZD5",
+        "url": "https://images.pexels.com/photos/462358/pexels-photo-462358.jpeg",
         "public": true,
         "filename": "house.jpeg"
       }],
@@ -668,7 +668,7 @@
     }, {
       "$id": "property-8",
       "pictures": [{
-        "fileId": "pgS0Oih6RbaOUa1DIbzt",
+        "url": "https://images.pexels.com/photos/32870/pexels-photo.jpg",
         "public": true,
         "filename": "house.jpeg"
       }],
@@ -685,7 +685,7 @@
     }, {
       "$id": "property-9",
       "pictures": [{
-        "fileId": "OMOpW0apR5KJEw8VOruw",
+        "url": "https://images.pexels.com/photos/1030555/pexels-photo-1030555.jpeg",
         "public": true,
         "filename": "house.jpeg"
       }],
@@ -702,7 +702,7 @@
     }, {
       "$id": "property-10",
       "pictures": [{
-        "fileId": "RuekIdG7QFC7mrYhfcaG",
+        "url": "https://images.pexels.com/photos/731082/pexels-photo-731082.jpeg",
         "public": true,
         "filename": "house.jpeg"
       }],
