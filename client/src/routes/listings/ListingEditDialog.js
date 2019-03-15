@@ -1,7 +1,7 @@
 import React from 'react';
 import * as R from 'ramda';
 import { Form, Field } from '@8base/forms';
-import { Dialog, Grid, Button, InputField, SelectField, ModalContext } from '@8base/boost';
+import { Dialog, Grid, Button, InputField, SelectField, ModalContext, DateInputField } from '@8base/boost';
 import { graphql, Query } from 'react-apollo';
 
 import { FileInputField } from 'shared/components';
@@ -115,7 +115,7 @@ class ListingEditDialog extends React.Component {
             <Field name="price" label="Price" type="text" placeholder="Price" component={ InputField } />
           </Grid.Box>
           <Grid.Box>
-            <Field name="closingDate" label="Closing Date" type="text" placeholder="2018-11-01T08:07:38.908Z" component={ InputField } />
+            <Field name="closingDate" label="Closing Date" component={ DateInputField } />
           </Grid.Box>
           {
             <Grid.Box>
