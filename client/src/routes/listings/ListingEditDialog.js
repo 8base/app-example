@@ -9,7 +9,7 @@ import * as sharedGraphQL from 'shared/graphql';
 import { TOAST_SUCCESS_MESSAGE } from 'shared/constants';
 
 const getPropertyOptions = (properties = []) => properties.map((property) => ({ value: property.id, label: property.title }));
-const getUserOptions = (users = []) => users.map((item) => ({ value: item.id, label: `${item.user.firstName} ${item.user.lastName}` }));
+const getUserOptions = (users = []) => users.map((item) => ({ value: item.id, label: `${R.pathOr('Unititled', ['user', 'firstName'], item)} ${R.pathOr('Unititled', ['user', 'lastName'], item)}` }));
 
 const LISTING_EDIT_DIALOG_ID = 'LISTING_EDIT_DIALOG_ID';
 
