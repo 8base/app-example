@@ -116,8 +116,8 @@ export const BROKERS_LIST_QUERY = gql`
 `;
 
 export const LISTINGS_LIST_QUERY = gql`
-  query ListingsList {
-    listingsList {
+  query ListingsList($orderBy: [ListingOrderBy], $skip: Int, $first: Int) {
+    listingsList(orderBy: $orderBy, skip: $skip, first: $first) {
       items {
         id
         createdAt
@@ -158,6 +158,7 @@ export const LISTINGS_LIST_QUERY = gql`
         closingDate
         price
       }
+      count
     }
   }
 `;

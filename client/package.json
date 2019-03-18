@@ -4,7 +4,7 @@
   "dependencies": {
     "@8base/app-provider": "^0.14.0",
     "@8base/auth": "^0.14.0",
-    "@8base/boost": "^0.13.4",
+    "@8base/boost": "^0.16.0",
     "@8base/file-input": "^0.14.0",
     "@8base/forms": "^0.14.0",
     "@8base/table-schema-provider": "^0.14.0",
