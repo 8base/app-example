@@ -38,7 +38,7 @@ let BrokersTable = ({ brokers, openModal, closeModal }) => (
             <Table.BodyCell>
               <Dropdown defaultOpen={ false }>
                 <Dropdown.Head>
-                  <Icon name="Dots" size="sm" color="LIGHT_GRAY2" />
+                  <Icon name="More" color="LIGHT_GRAY2" />
                 </Dropdown.Head>
                 <Dropdown.Body pin="right">
                   {
