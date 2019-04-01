@@ -4,6 +4,7 @@ import { WebAuth0AuthClient } from '@8base/web-auth0-auth-client';
 import { EightBaseAppProvider } from '@8base/app-provider';
 import { EightBaseBoostProvider, AsyncContent } from '@8base/boost';
 import { ToastContainer, toast } from 'react-toastify';
+import { ApolloLink, Observable } from 'apollo-link';
 
 import { ProtectedRoute } from 'shared/components';
 import { TOAST_SUCCESS_MESSAGE } from 'shared/constants';
@@ -14,6 +15,8 @@ import { Brokers } from './routes/brokers';
 import { Customers } from './routes/customers';
 import { Properties } from './routes/properties';
 import { Listings } from './routes/listings';
+
+import { SignUpLink } from './SignUpLink';
 
 const { REACT_APP_8BASE_API_ENDPOINT } = process.env;
 
@@ -63,7 +66,7 @@ class Application extends React.PureComponent {
     }
   };
 
-  onRequestError = ({ graphQLErrors }) => {
+  onRequestError = ({ graphQLErrors, forward }) => {
     const hasGraphQLErrors = Array.isArray(graphQLErrors) && graphQLErrors.length > 0;
 
     if (hasGraphQLErrors) {
@@ -71,6 +74,36 @@ class Application extends React.PureComponent {
         toast.error(error.message);
       });
     }
+  };
+
+  extendLinks = (links, { getAuthState }) => {
+    console.log('getAuthState', getAuthState());
+
+    const consoleLink = new ApolloLink((operation, forward) => {
+      return new Observable(observer => {
+        return forward(operation).subscribe({
+          error: error => {
+            console.log('ERROR: ', operation.operationName, error);
+            observer.error(error);
+          },
+          next: data => {
+            console.log('DATA: ', operation.operationName, data);
+            observer.next(data);
+          },
+          complete: () => {
+            console.log('COMPLETE: ', operation.operationName);
+            observer.complete();
+          },
+        });
+      });
+    });
+
+    const signUpLink = new SignUpLink({
+      getAuthState,
+      authProfileId: '',
+    });
+
+    return [...links.slice(0, 2), signUpLink, consoleLink, ...links.slice(2)];
   };
 
   render() {
@@ -82,6 +115,7 @@ class Application extends React.PureComponent {
             authClient={auth0WebClient}
             onRequestSuccess={this.onRequestSuccess}
             onRequestError={this.onRequestError}
+            extendLinks={ this.extendLinks }
           >
             {this.renderContent}
           </EightBaseAppProvider>
@@ -93,3 +127,4 @@ class Application extends React.PureComponent {
 }
 
 export { Application };
+
