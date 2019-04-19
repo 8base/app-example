@@ -5,12 +5,18 @@ import { withAuth } from '@8base/auth';
 class CallbackContainer extends React.Component {
   async componentDidMount() {
     const { auth, history } = this.props;
-    const { idToken, email } = await auth.getAuthorizedData();
+    const { idToken, email, isEmailVerified } = await auth.getAuthorizedData();
+
+    if (!isEmailVerified) {
+      history.replace('/auth/confirm');
+      return;
+    }
 
     await auth.setAuthState({
       token: idToken,
       email,
     });
+
     history.replace('/');
   }
 
