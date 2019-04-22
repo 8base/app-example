@@ -8,12 +8,14 @@ import { UserNotExistErrorCode } from '@8base/error-codes';
 import * as R from 'ramda';
 
 const SIGNUP_MUTATION = gql`
-  mutation UserSignUpMutation($user: UserCreateInput, $authProfileId: ID) {
+  mutation UserSignUpMutation($user: UserCreateInput!, $authProfileId: ID) {
     userSignUp(user: $user, authProfileId: $authProfileId) {
       id
     }
   }
 `;
+
+let signUpPromise = null;
 
 const hasUserNotExistError = R.any(R.propEq('code', UserNotExistErrorCode));
 
@@ -23,6 +25,7 @@ export class SignUpLink extends ApolloLink {
 
     this.getAuthState = getAuthState;
     this.authProfileId = authProfileId;
+    this.fetching = false;
   }
 
   request(operation, forward) {
@@ -49,12 +52,14 @@ export class SignUpLink extends ApolloLink {
           }
         },
         complete: () => {
-          observer.complete();
+          if (!this.fetching) {
+            observer.complete();
+          }
         },
       };
 
       const handleUserNotExistError = () => {
-        this.sendSingUp()
+        this.sendSignUp(operation, forward)
           .then(() => {
             if (subscription) {
               subscription.unsubscribe();
@@ -76,33 +81,40 @@ export class SignUpLink extends ApolloLink {
   sendSignUp(operation, forward) {
     const { email } = this.getAuthState();
 
-    return new Promise((resolve, reject) => {
-      const signUpOperation = createOperation(
-        operation.getContext(),
-        {
-          query: SIGNUP_MUTATION,
-          variables: {
-            user: {
-              email,
-            },
-            authProfileId: this.authProfileId,
-          },
-        },
-      );
+    this.fetching = true;
 
-      forward(signUpOperation).subscribe({
-        error: reject,
-        next: data => {
-          if (data.data && R.path(['data', 'userSignUp', 'id'], data)) {
-            resolve();
-          } else {
-            reject();
-          }
-        },
-        complete: () => {
-        },
+    if (!signUpPromise) {
+      signUpPromise = new Promise((resolve, reject) => {
+        const signUpOperation = createOperation(
+          operation.getContext(),
+          {
+            query: SIGNUP_MUTATION,
+            variables: {
+              user: {
+                email,
+              },
+              authProfileId: this.authProfileId,
+            },
+          },
+        );
+
+        forward(signUpOperation).subscribe({
+          error: reject,
+          next: data => {
+            if (data.data && R.path(['data', 'userSignUp', 'id'], data)) {
+              resolve();
+            } else {
+              reject();
+            }
+          },
+          complete: () => {
+            this.fetching = false;
+          },
+        });
       });
-    });
+    }
+
+    return signUpPromise;
   }
 }
 
