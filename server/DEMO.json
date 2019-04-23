@@ -115,7 +115,7 @@
           "isList": false,
           "isRequired": false,
           "isUnique": null,
-          "defaultValue": false,
+          "defaultValue": "false",
           "relation": null
         },
         {
@@ -130,7 +130,7 @@
           "isList": false,
           "isRequired": false,
           "isUnique": null,
-          "defaultValue": false,
+          "defaultValue": "false",
           "relation": null
         },
         {
