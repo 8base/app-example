@@ -1,7 +1,7 @@
 import React from 'react';
 import * as R from 'ramda';
 import { Route, Redirect } from 'react-router-dom';
-import { withAuth } from '@8base/auth';
+import { withAuth } from '@8base/app-provider';
 
 const renderComponent = props => {
   const { render, children, component, ...rest } = props;
