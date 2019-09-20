@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { WebAuth0AuthClient } from '@8base/web-auth0-auth-client';
-import { EightBaseAppProvider } from '@8base/app-provider';
-import { EightBaseBoostProvider, AsyncContent } from '@8base/boost';
+import { AppProvider } from '@8base/react-sdk';
+import { Auth, AUTH_STRATEGIES } from '@8base/auth';
+import { BoostProvider, AsyncContent } from '@8base/boost';
 import { ToastContainer, toast } from 'react-toastify';
 
 import { ProtectedRoute } from 'shared/components';
 import { TOAST_SUCCESS_MESSAGE } from 'shared/constants';
 
 import { MainPlate, ContentPlate, Nav } from './components';
-import { Auth } from './routes/auth';
+import { Auth as AuthRoute } from './routes/auth';
 import { Brokers } from './routes/brokers';
 import { Customers } from './routes/customers';
 import { Properties } from './routes/properties';
@@ -17,21 +17,29 @@ import { Listings } from './routes/listings';
 
 const { REACT_APP_8BASE_API_ENDPOINT } = process.env;
 
-const AUTH_CLIENT_ID = 'qGHZVu5CxY5klivm28OPLjopvsYp0baD';
-const AUTH_DOMAIN = 'auth.8base.com';
+const AUTH0_CLIENT_ID = 'qGHZVu5CxY5klivm28OPLjopvsYp0baD';
+const AUTH0_CLIENT_DOMAIN = 'auth.8base.com';
+const REDIRECT_URI = `${window.location.origin}/auth/callback`;
+const LOGOUT_REDIRECT_URI = `${window.location.origin}/auth`;
 
-const auth0WebClient = new WebAuth0AuthClient({
-  domain: AUTH_DOMAIN,
-  clientId: AUTH_CLIENT_ID,
-  redirectUri: `${window.location.origin}/auth/callback`,
-  logoutRedirectUri: `${window.location.origin}/auth`,
-});
+const authClient = Auth.createClient(
+  {
+    strategy: AUTH_STRATEGIES.WEB_AUTH0,
+    subscribable: true,
+  },
+  {
+    clientId: AUTH0_CLIENT_ID,
+    domain: AUTH0_CLIENT_DOMAIN,
+    redirectUri: REDIRECT_URI,
+    logoutRedirectUri: LOGOUT_REDIRECT_URI,
+  }
+);
 
 class Application extends React.PureComponent {
   renderContent = ({ loading }) => (
     <AsyncContent loading={loading} stretch>
       <Switch>
-        <Route path="/auth" component={Auth} />
+        <Route path="/auth" component={AuthRoute} />
         <Route>
           <MainPlate>
             <Nav.Plate color="BLUE">
@@ -76,17 +84,17 @@ class Application extends React.PureComponent {
   render() {
     return (
       <BrowserRouter>
-        <EightBaseBoostProvider>
-          <EightBaseAppProvider
+        <BoostProvider>
+          <AppProvider
             uri={REACT_APP_8BASE_API_ENDPOINT}
-            authClient={auth0WebClient}
+            authClient={authClient}
             onRequestSuccess={this.onRequestSuccess}
             onRequestError={this.onRequestError}
           >
             {this.renderContent}
-          </EightBaseAppProvider>
+          </AppProvider>
           <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
-        </EightBaseBoostProvider>
+        </BoostProvider>
       </BrowserRouter>
     );
   }

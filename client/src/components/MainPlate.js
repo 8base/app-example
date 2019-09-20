@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from '@8base/boost';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 import { Header } from './Header';
 import { Breadcrumbs } from './Breadcrumbs';

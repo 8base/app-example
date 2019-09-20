@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { matchPath } from 'react-router';
 import { withRouter, Link as RouterLink } from 'react-router-dom';
 import { Grid, Breadcrumbs as BoostBreadcrumbs, Link } from '@8base/boost';
