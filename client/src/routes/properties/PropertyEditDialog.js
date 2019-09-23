@@ -1,5 +1,4 @@
 import React from 'react';
-import * as R from 'ramda';
 import { Form, Field } from '@8base/forms';
 import { Dialog, Grid, Button, InputField, CheckboxField, ModalContext } from '@8base/boost';
 import { graphql } from 'react-apollo';
@@ -13,11 +12,11 @@ const PROPERTY_EDIT_DIALOG_ID = 'PROPERTY_EDIT_DIALOG_ID';
 class PropertyEditDialog extends React.Component {
   static contextType = ModalContext;
 
-  createOnSubmit = R.memoize((id) => async (data) => {
+  createOnSubmit = (id) => async (data) => {
     await this.props.propertyUpdate({ variables: { data: { ...data, id } }});
 
     this.context.closeModal(PROPERTY_EDIT_DIALOG_ID);
-  });
+  };
 
   onClose = () => {
     this.context.closeModal(PROPERTY_EDIT_DIALOG_ID);

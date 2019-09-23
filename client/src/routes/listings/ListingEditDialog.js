@@ -16,11 +16,11 @@ const LISTING_EDIT_DIALOG_ID = 'LISTING_EDIT_DIALOG_ID';
 class ListingEditDialog extends React.Component {
   static contextType = ModalContext;
 
-  createOnSubmit = R.memoize((id) => async (data) => {
+  createOnSubmit = (id) => async (data) => {
     await this.props.listingUpdate({ variables: { data: { ...data, id } }});
 
     this.context.closeModal(LISTING_EDIT_DIALOG_ID);
-  });
+  };
 
   onClose = () => {
     this.context.closeModal(LISTING_EDIT_DIALOG_ID);
@@ -133,7 +133,7 @@ class ListingEditDialog extends React.Component {
 
   renderForm = ({ args }) => {
     return (
-      <Form type="UPDATE" tableSchemaName="Listings" onSubmit={ this.createOnSubmit(args.initialValues.id) } initialValues={ args.initialValues }>
+      <Form type="UPDATE" tableSchemaName="Listings" onSubmit={ this.createOnSubmit(args.initialValues.id) } initialValues={ args.initialValues } formatRelationToIds>
         { this.renderFormContent }
       </Form>
     );

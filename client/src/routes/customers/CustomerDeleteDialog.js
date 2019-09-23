@@ -1,5 +1,4 @@
 import React from 'react';
-import * as R from 'ramda';
 import { Form } from '@8base/forms';
 import { Dialog, Button, ModalContext } from '@8base/boost';
 import { graphql } from 'react-apollo';
@@ -12,11 +11,11 @@ const CUSTOMER_DELETE_DIALOG_ID = 'CUSTOMER_DELETE_DIALOG_ID';
 class CustomerDeleteDialog extends React.Component {
   static contextType = ModalContext;
 
-  createOnSubmit = R.memoize((id) => async () => {
+  createOnSubmit = (id) => async () => {
     await this.props.customerDelete({ variables: { id }});
 
     this.context.closeModal(CUSTOMER_DELETE_DIALOG_ID);
-  });
+  };
 
   onClose = () => {
     this.context.closeModal(CUSTOMER_DELETE_DIALOG_ID);

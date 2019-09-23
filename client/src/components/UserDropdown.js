@@ -1,9 +1,9 @@
 import React from 'react';
 import { compose } from 'recompose';
-import { Query } from 'react-apollo';
+import { Query, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Dropdown, Menu, Avatar } from '@8base/boost';
-import { withLogout } from '@8base/app-provider';
+import { withAuth } from '@8base/react-sdk';
 import * as R from 'ramda';
 
 const USER_QUERY = gql`
@@ -23,6 +23,8 @@ const USER_QUERY = gql`
 
 class UserDropdown extends React.Component {
   renderContent = ({ data, loading }) => {
+    const { auth, client } = this.props;
+
     if (loading) {
       return null;
     }
@@ -41,7 +43,10 @@ class UserDropdown extends React.Component {
             <Menu>
               <Menu.Item
                 onClick={async () => {
-                  await this.props.logout();
+                  await client.clearStore();
+
+                  auth.authClient.logout();
+
                   closeDropdown();
                 }}
               >
@@ -59,6 +64,9 @@ class UserDropdown extends React.Component {
   }
 }
 
-UserDropdown = compose(withLogout)(UserDropdown);
+UserDropdown = compose(
+  withApollo,
+  withAuth,
+)(UserDropdown);
 
 export { UserDropdown };
