@@ -6,7 +6,7 @@ class AuthContainer extends React.Component {
   async componentDidMount() {
     const { auth } = this.props;
 
-    await auth.authorize({ mode: 'login' });
+    await auth.authClient.authorize();
   }
 
   render() {

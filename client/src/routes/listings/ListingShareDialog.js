@@ -1,5 +1,4 @@
 import React from 'react';
-import * as R from 'ramda';
 import { Form, Field } from '@8base/forms';
 import { Dialog, Grid, Button, InputField, ModalContext } from '@8base/boost';
 import { graphql } from 'react-apollo';
@@ -12,11 +11,11 @@ const LISTING_SHARE_DIALOG_ID = 'LISTING_SHARE_DIALOG_ID';
 class ListingShareDialog extends React.Component {
   static contextType = ModalContext;
 
-  createOnSubmit = R.memoize((id) => async (data) => {
+  createOnSubmit = (id) => async (data) => {
     await this.props.listingShare({ variables: { id, email: data.email }});
 
     this.context.closeModal(LISTING_SHARE_DIALOG_ID);
-  });
+  };
 
   onClose = () => {
     this.context.closeModal(LISTING_SHARE_DIALOG_ID);

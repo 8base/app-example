@@ -12,7 +12,7 @@ const PROPERTY_DELETE_DIALOG_ID = 'PROPERTY_DELETE_DIALOG_ID';
 class PropertyDeleteDialog extends React.Component {
   static contextType = ModalContext;
 
-  createOnSubmit = R.memoize((id) => async () => {
+  createOnSubmit = R.memoizeWith((id) => async () => {
     await this.props.propertyDelete({ variables: { id }});
 
     this.context.closeModal(PROPERTY_DELETE_DIALOG_ID);

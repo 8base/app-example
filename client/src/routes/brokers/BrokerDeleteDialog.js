@@ -1,5 +1,4 @@
 import React from 'react';
-import * as R from 'ramda';
 import { Form } from '@8base/forms';
 import { Dialog, Button, ModalContext } from '@8base/boost';
 import { graphql } from 'react-apollo';
@@ -12,11 +11,11 @@ const BROKER_DELETE_DIALOG_ID = 'BROKER_DELETE_DIALOG_ID';
 class BrokerDeleteDialog extends React.Component {
   static contextType = ModalContext;
 
-  createOnSubmit = R.memoize((id) => async () => {
+  createOnSubmit = (id) => async () => {
     await this.props.brokerDelete({ variables: { id }});
 
     this.context.closeModal(BROKER_DELETE_DIALOG_ID);
-  });
+  };
 
   onClose = () => {
     this.context.closeModal(BROKER_DELETE_DIALOG_ID);
