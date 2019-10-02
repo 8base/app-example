@@ -6,6 +6,7 @@
 * Install 8base CLI `npm install -g 8base`;
 * Login using CLI `8base login`;
 * Go to the server directory `cd server`;
+* Select workspace `8base configure`;
 * Install dependencies `npm install`;
 * Deploy custom functions `8base deploy`;
 * Import schema and data via `8base import -f=DEMO.JSON`. This will take aroud 2 minutes;
