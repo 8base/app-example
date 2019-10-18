@@ -22,4 +22,4 @@
 
 ## Getting logs
 
-To get logs from the `listingShare` custom function use `8base logs listingShare`. Learn more about local development tools in our <a href="https://docs.8base.com/docs/local-development" target="_blank">docs</a>.
+To get logs from the `listingShare` custom function use `8base logs listingShare`. Learn more about local development tools in our <a href="https://docs.8base.com/8base-console/custom-functions" target="_blank">docs</a>.
