@@ -9,7 +9,7 @@
 * Select workspace `8base configure`;
 * Install dependencies `npm install`;
 * Deploy custom functions `8base deploy`;
-* Import schema and data via `8base import -f=DEMO.JSON`. This will take aroud 2 minutes;
+* Import schema and data via `8base import -f=DEMO.JSON --data=false`. This will take aroud 2 minutes;
 
 ## Client Setup
 
