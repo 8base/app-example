@@ -26,60 +26,59 @@ let PropertiesTable = ({ properties, openModal, closeModal }) => (
       <Table.HeaderCell />
     </Table.Header>
 
-    <Table.Body loading={ properties.loading } data={ properties } action="Create Property" onActionClick={() => openModal(PropertyCreateDialog.id)}>
-      {
-        (property) => (
-          <Table.BodyRow columns="repeat(10, 1fr) 60px" key={ property.id }>
-            <Table.BodyCell>
-              { property.pictures.items.length > 0 && <img src={ property.pictures.items[0].downloadUrl } alt="" style={{ width: '5rem', height: '5rem' }} /> }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { property.title }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { property.description }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { DateTime.fromISO(property.createdAt).toFormat('ff') }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { DateTime.fromISO(property.updatedAt).toFormat('ff') }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { property.bedrooms }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { property.sqFootage }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { property.bathrooms }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { `${property.garage}` }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { `${property.pool}` }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              <Dropdown defaultOpen={ false }>
-                <Dropdown.Head>
-                  <Icon name="More" color="LIGHT_GRAY2" />
-                </Dropdown.Head>
-                <Dropdown.Body pin="right">
-                  {
-                    ({ closeDropdown }) => (
-                      <Menu>
-                        <Menu.Item onClick={ () => { openModal(PropertyEditDialog.id, { initialValues: property }); closeDropdown(); } }>Edit</Menu.Item>
-                        <Menu.Item onClick={ () => { openModal(PropertyDeleteDialog.id, { id: property.id }); closeDropdown(); } }>Delete</Menu.Item>
-                      </Menu>
-                    )
-                  }
-                </Dropdown.Body>
-              </Dropdown>
-            </Table.BodyCell>
-          </Table.BodyRow>
-        )
-      }
+    <Table.Body
+      loading={properties.loading}
+      data={properties}
+      action="Create Property"
+      onActionClick={() => openModal(PropertyCreateDialog.id)}
+    >
+      {property => (
+        <Table.BodyRow columns="repeat(10, 1fr) 60px" key={property.id}>
+          <Table.BodyCell>
+            {property.pictures.items.length > 0 && (
+              <img src={property.pictures.items[0].downloadUrl} alt="" style={{ width: '5rem', height: '5rem' }} />
+            )}
+          </Table.BodyCell>
+          <Table.BodyCell>{property.title}</Table.BodyCell>
+          <Table.BodyCell>{property.description}</Table.BodyCell>
+          <Table.BodyCell>{DateTime.fromISO(property.createdAt).toFormat('ff')}</Table.BodyCell>
+          <Table.BodyCell>{DateTime.fromISO(property.updatedAt).toFormat('ff')}</Table.BodyCell>
+          <Table.BodyCell>{property.bedrooms}</Table.BodyCell>
+          <Table.BodyCell>{property.sqFootage}</Table.BodyCell>
+          <Table.BodyCell>{property.bathrooms}</Table.BodyCell>
+          <Table.BodyCell>{`${property.garage}`}</Table.BodyCell>
+          <Table.BodyCell>{`${property.pool}`}</Table.BodyCell>
+          <Table.BodyCell>
+            <Dropdown defaultOpen={false}>
+              <Dropdown.Head>
+                <Icon name="More" color="LIGHT_GRAY2" />
+              </Dropdown.Head>
+              <Dropdown.Body pin="right">
+                {({ closeDropdown }) => (
+                  <Menu>
+                    <Menu.Item
+                      onClick={() => {
+                        openModal(PropertyEditDialog.id, { initialValues: property });
+                        closeDropdown();
+                      }}
+                    >
+                      Edit
+                    </Menu.Item>
+                    <Menu.Item
+                      onClick={() => {
+                        openModal(PropertyDeleteDialog.id, { id: property.id });
+                        closeDropdown();
+                      }}
+                    >
+                      Delete
+                    </Menu.Item>
+                  </Menu>
+                )}
+              </Dropdown.Body>
+            </Dropdown>
+          </Table.BodyCell>
+        </Table.BodyRow>
+      )}
     </Table.Body>
   </Table>
 );
@@ -87,12 +86,12 @@ let PropertiesTable = ({ properties, openModal, closeModal }) => (
 PropertiesTable = compose(
   withModal,
   graphql(sharedGraphQL.PROPERTIES_LIST_QUERY, {
-    props: ({ data: { propertiesList: ({ items } = {}) } }) => {
+    props: ({ data: { propertiesList: { items } = {} } }) => {
       return {
-        properties: items || []
+        properties: items || [],
       };
     },
-  }),
+  })
 )(PropertiesTable);
 
 export { PropertiesTable };

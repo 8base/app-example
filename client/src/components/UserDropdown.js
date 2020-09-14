@@ -66,7 +66,7 @@ class UserDropdown extends React.Component {
 
 UserDropdown = compose(
   withApollo,
-  withAuth,
+  withAuth
 )(UserDropdown);
 
 export { UserDropdown };

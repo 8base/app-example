@@ -130,21 +130,21 @@ export const LISTINGS_LIST_QUERY = gql`
           id
           user {
             firstName
-            lastName 
+            lastName
           }
         }
         buyer {
           id
           user {
             firstName
-            lastName 
+            lastName
           }
         }
         seller {
           id
           user {
             firstName
-            lastName 
+            lastName
           }
         }
         documents {

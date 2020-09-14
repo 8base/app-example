@@ -20,15 +20,18 @@ const { REACT_APP_8BASE_API_ENDPOINT } = process.env;
 const AUTH0_CLIENT_ID = 'qGHZVu5CxY5klivm28OPLjopvsYp0baD';
 const AUTH0_CLIENT_DOMAIN = 'auth.8base.com';
 
-const authClient = Auth.createClient({
-  strategy: AUTH_STRATEGIES.WEB_AUTH0,
-  subscribable: true,
-}, {
-  clientId: AUTH0_CLIENT_ID,
-  domain: AUTH0_CLIENT_DOMAIN,
-  redirectUri: `${window.location.origin}/auth/callback`,
-  logoutRedirectUri: `${window.location.origin}/auth`,
-});
+const authClient = Auth.createClient(
+  {
+    strategy: AUTH_STRATEGIES.WEB_AUTH0,
+    subscribable: true,
+  },
+  {
+    clientId: AUTH0_CLIENT_ID,
+    domain: AUTH0_CLIENT_DOMAIN,
+    redirectUri: `${window.location.origin}/auth/callback`,
+    logoutRedirectUri: `${window.location.origin}/auth`,
+  }
+);
 
 class Application extends React.PureComponent {
   renderContent = ({ loading }) => (

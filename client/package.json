@@ -27,7 +27,9 @@
     "build": "cross-env NODE_PATH=src react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "eslint": "eslint src/**/*.js"
+    "eslint": "eslint src/**/*.js",
+    "prettier": "prettier --ignore-path ./.prettierignore",
+    "prettier:write": "yarn prettier --write \"**/*.+(js|jsx|ts|tsx|json|yaml|yml|css|sass|scss|md|mdx|graphql)\""
   },
   "license": "MIT",
   "devDependencies": {

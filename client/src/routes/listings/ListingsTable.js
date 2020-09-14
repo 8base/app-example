@@ -30,7 +30,7 @@ class ListingsTable extends React.Component {
   onActionClick = () => {
     const { openModal } = this.props;
 
-    openModal(ListingCreateDialog.id)
+    openModal(ListingCreateDialog.id);
   };
 
   renderCell = (column, data) => {
@@ -43,14 +43,18 @@ class ListingsTable extends React.Component {
         rendered = R.pathOr('Unititled', ['property', 'title'], data);
         break;
       }
-      case 'broker': 
-      case 'buyer': 
+      case 'broker':
+      case 'buyer':
       case 'seller': {
-        rendered = `${R.pathOr('Unititled', [column.name, 'user', 'firstName'], data)} ${R.pathOr('Unititled', [column.name, 'user', 'lastName'], data)}`;
+        rendered = `${R.pathOr('Unititled', [column.name, 'user', 'firstName'], data)} ${R.pathOr(
+          'Unititled',
+          [column.name, 'user', 'lastName'],
+          data
+        )}`;
         break;
       }
       case 'closingDate': {
-        rendered =  data.closingDate ? DateTime.fromISO(data.closingDate).toFormat('ff') : 'none';
+        rendered = data.closingDate ? DateTime.fromISO(data.closingDate).toFormat('ff') : 'none';
         break;
       }
       case 'createdAt':
@@ -60,17 +64,15 @@ class ListingsTable extends React.Component {
       }
       case 'documents': {
         rendered = (
-          <Dropdown defaultOpen={ false }>
-            <Dropdown.Head>
-              { R.pathOr(0, ['documents', 'items', 'length'], data) } documents
-            </Dropdown.Head>
+          <Dropdown defaultOpen={false}>
+            <Dropdown.Head>{R.pathOr(0, ['documents', 'items', 'length'], data)} documents</Dropdown.Head>
             <Dropdown.Body pin="right">
               <Paper padding="sm">
-                {
-                  R.pathOr([], ['documents', 'items'], data).map(({ filename, downloadUrl }) => (
-                    <Link key={ downloadUrl } target="_blank" href={ downloadUrl } size="sm">{ filename }</Link>
-                  ))
-                }
+                {R.pathOr([], ['documents', 'items'], data).map(({ filename, downloadUrl }) => (
+                  <Link key={downloadUrl} target="_blank" href={downloadUrl} size="sm">
+                    {filename}
+                  </Link>
+                ))}
               </Paper>
             </Dropdown.Body>
           </Dropdown>
@@ -79,20 +81,39 @@ class ListingsTable extends React.Component {
       }
       case 'actions': {
         rendered = (
-          <Dropdown defaultOpen={ false }>
+          <Dropdown defaultOpen={false}>
             <Dropdown.Head>
               <Icon name="More" color="LIGHT_GRAY2" />
             </Dropdown.Head>
             <Dropdown.Body pin="right">
-              {
-                ({ closeDropdown }) => (
-                  <Menu>
-                    <Menu.Item onClick={ () => { openModal(ListingEditDialog.id, {  initialValues: data }); closeDropdown(); } }>Edit</Menu.Item>
-                    <Menu.Item onClick={ () => { openModal(ListingShareDialog.id, { id: data.id }); closeDropdown(); } }>Share</Menu.Item>
-                    <Menu.Item onClick={ () => { openModal(ListingDeleteDialog.id, { id: data.id }); closeDropdown(); } }>Delete</Menu.Item>
-                  </Menu>
-                )
-              }
+              {({ closeDropdown }) => (
+                <Menu>
+                  <Menu.Item
+                    onClick={() => {
+                      openModal(ListingEditDialog.id, { initialValues: data });
+                      closeDropdown();
+                    }}
+                  >
+                    Edit
+                  </Menu.Item>
+                  <Menu.Item
+                    onClick={() => {
+                      openModal(ListingShareDialog.id, { id: data.id });
+                      closeDropdown();
+                    }}
+                  >
+                    Share
+                  </Menu.Item>
+                  <Menu.Item
+                    onClick={() => {
+                      openModal(ListingDeleteDialog.id, { id: data.id });
+                      closeDropdown();
+                    }}
+                  >
+                    Delete
+                  </Menu.Item>
+                </Menu>
+              )}
             </Dropdown.Body>
           </Dropdown>
         );
@@ -105,7 +126,7 @@ class ListingsTable extends React.Component {
     }
 
     return rendered;
-  }
+  };
 
   renderTable = ({ data, loading }) => {
     const { tableState, onChange } = this.props;
@@ -117,14 +138,14 @@ class ListingsTable extends React.Component {
 
     return (
       <TableBuilder
-        columns={ LISTINGS_TABLE_COLUMNS }
-        data={ tableData }
-        loading={ loading }
+        columns={LISTINGS_TABLE_COLUMNS}
+        data={tableData}
+        loading={loading}
         action="Create Listing"
-        onActionClick={ this.onActionClick }
-        tableState={ finalTableState }
-        onChange={ onChange }
-        renderCell={ this.renderCell }
+        onActionClick={this.onActionClick}
+        tableState={finalTableState}
+        onChange={onChange}
+        renderCell={this.renderCell}
         withPagination
       />
     );
@@ -147,14 +168,17 @@ class ListingsTable extends React.Component {
 
 ListingsTable = compose(
   withModal,
-  withStateHandlers({ tableState: { pagination: { page: 1, pageSize: 20 }}}, {
-    onChange: ({ tableState }) => (value) => ({
-      tableState: {
-        ...tableState,
-        ...value,
-      },
-    })
-  }),
+  withStateHandlers(
+    { tableState: { pagination: { page: 1, pageSize: 20 } } },
+    {
+      onChange: ({ tableState }) => value => ({
+        tableState: {
+          ...tableState,
+          ...value,
+        },
+      }),
+    }
+  )
 )(ListingsTable);
 
 export { ListingsTable };

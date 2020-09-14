@@ -19,48 +19,48 @@ let BrokersTable = ({ brokers, openModal, closeModal }) => (
       <Table.HeaderCell />
     </Table.Header>
 
-    <Table.Body loading={ brokers.loading } data={ R.pathOr([], ['brokersList', 'items'], brokers) }  action="Create Broker" onActionClick={() => openModal(BrokerCreateDialog.id)}>
-      {
-        (broker) => (
-          <Table.BodyRow columns="repeat(4, 1fr) 60px" key={ broker.id }>
-            <Table.BodyCell>
-              { R.pathOr('Unititled', ['user', 'firstName'], broker) }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { R.pathOr('Unititled', ['user', 'lastName'], broker) }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { R.pathOr('Unititled', ['user', 'email'], broker) }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { R.pathOr(0, ['listings', 'count'], broker) }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              <Dropdown defaultOpen={ false }>
-                <Dropdown.Head>
-                  <Icon name="More" color="LIGHT_GRAY2" />
-                </Dropdown.Head>
-                <Dropdown.Body pin="right">
-                  {
-                    ({ closeDropdown }) => (
-                      <Menu>
-                        <Menu.Item onClick={ () => { openModal(BrokerDeleteDialog.id, { id: broker.id }); closeDropdown(); } }>Delete</Menu.Item>
-                      </Menu>
-                    )
-                  }
-                </Dropdown.Body>
-              </Dropdown>
-            </Table.BodyCell>
-          </Table.BodyRow>
-        )
-      }
+    <Table.Body
+      loading={brokers.loading}
+      data={R.pathOr([], ['brokersList', 'items'], brokers)}
+      action="Create Broker"
+      onActionClick={() => openModal(BrokerCreateDialog.id)}
+    >
+      {broker => (
+        <Table.BodyRow columns="repeat(4, 1fr) 60px" key={broker.id}>
+          <Table.BodyCell>{R.pathOr('Unititled', ['user', 'firstName'], broker)}</Table.BodyCell>
+          <Table.BodyCell>{R.pathOr('Unititled', ['user', 'lastName'], broker)}</Table.BodyCell>
+          <Table.BodyCell>{R.pathOr('Unititled', ['user', 'email'], broker)}</Table.BodyCell>
+          <Table.BodyCell>{R.pathOr(0, ['listings', 'count'], broker)}</Table.BodyCell>
+          <Table.BodyCell>
+            <Dropdown defaultOpen={false}>
+              <Dropdown.Head>
+                <Icon name="More" color="LIGHT_GRAY2" />
+              </Dropdown.Head>
+              <Dropdown.Body pin="right">
+                {({ closeDropdown }) => (
+                  <Menu>
+                    <Menu.Item
+                      onClick={() => {
+                        openModal(BrokerDeleteDialog.id, { id: broker.id });
+                        closeDropdown();
+                      }}
+                    >
+                      Delete
+                    </Menu.Item>
+                  </Menu>
+                )}
+              </Dropdown.Body>
+            </Dropdown>
+          </Table.BodyCell>
+        </Table.BodyRow>
+      )}
     </Table.Body>
   </Table>
 );
 
 BrokersTable = compose(
   withModal,
-  graphql(sharedGraphQL.BROKERS_LIST_QUERY, { name: 'brokers' }),
+  graphql(sharedGraphQL.BROKERS_LIST_QUERY, { name: 'brokers' })
 )(BrokersTable);
 
 export { BrokersTable };

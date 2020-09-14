@@ -10,9 +10,7 @@ class AuthContainer extends React.Component {
   }
 
   render() {
-    return (
-      <Loader stretch />
-    );
+    return <Loader stretch />;
   }
 }
 
