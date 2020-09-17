@@ -1,25 +1,11 @@
 import React from 'react';
 import { compose } from 'recompose';
 import { Query, withApollo } from 'react-apollo';
-import gql from 'graphql-tag';
 import { Dropdown, Menu, Avatar } from '@8base/boost';
-import { withAuth } from '@8base/react-sdk';
+import { withAuth } from '@8base-react/auth';
 import * as R from 'ramda';
 
-const USER_QUERY = gql`
-  query User {
-    user {
-      email
-      firstName
-      id
-      lastName
-      avatar {
-        id
-        downloadUrl
-      }
-    }
-  }
-`;
+import { USER_QUERY } from 'shared/graphql';
 
 class UserDropdown extends React.Component {
   renderContent = ({ data, loading }) => {

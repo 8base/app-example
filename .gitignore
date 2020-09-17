@@ -14,3 +14,5 @@ npm-debug.log
 packages/local-*
 yarn-error.log
 yerna.log
+schema.graphql
+.graphqlconfig

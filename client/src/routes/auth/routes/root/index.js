@@ -1,6 +1,6 @@
 import React from 'react';
 import { Loader } from '@8base/boost';
-import { withAuth } from '@8base/app-provider';
+import { withAuth } from '@8base-react/auth';
 
 class AuthContainer extends React.Component {
   async componentDidMount() {
