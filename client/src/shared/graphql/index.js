@@ -130,21 +130,21 @@ export const LISTINGS_LIST_QUERY = gql`
           id
           user {
             firstName
-            lastName 
+            lastName
           }
         }
         buyer {
           id
           user {
             firstName
-            lastName 
+            lastName
           }
         }
         seller {
           id
           user {
             firstName
-            lastName 
+            lastName
           }
         }
         documents {
@@ -208,6 +208,36 @@ export const PROPERTIES_LIST_QUERY = gql`
         bathrooms
         garage
         pool
+      }
+    }
+  }
+`;
+
+export const USER_QUERY = gql`
+  query User {
+    user {
+      email
+      firstName
+      id
+      lastName
+      avatar {
+        id
+        downloadUrl
+      }
+    }
+  }
+`;
+
+export const USER_SIGNUP_MUTATIONS = gql`
+  mutation UserSignup($authProfileId: ID, $user: UserCreateInput!) {
+    userSignUpWithToken(authProfileId: $authProfileId, user: $user) {
+      email
+      firstName
+      id
+      lastName
+      avatar {
+        id
+        downloadUrl
       }
     }
   }

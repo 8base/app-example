@@ -13,8 +13,8 @@ const PROPERTY_CREATE_DIALOG_ID = 'PROPERTY_CREATE_DIALOG_ID';
 class PropertyCreateDialog extends React.Component {
   static contextType = ModalContext;
 
-  onSubmit = async (data) => {
-    await this.props.propertyCreate({ variables: { data }});
+  onSubmit = async data => {
+    await this.props.propertyCreate({ variables: { data } });
 
     this.context.closeModal(PROPERTY_CREATE_DIALOG_ID);
   };
@@ -24,48 +24,52 @@ class PropertyCreateDialog extends React.Component {
   };
 
   renderFormContent = ({ handleSubmit, invalid, submitting, pristine }) => (
-    <form onSubmit={ handleSubmit }>
-      <Dialog.Header title="New Property" onClose={ this.onClose } />
+    <form onSubmit={handleSubmit}>
+      <Dialog.Header title="New Property" onClose={this.onClose} />
       <Dialog.Body scrollable>
         <Grid.Layout gap="sm" stretch>
           <Grid.Box>
-            <Field name="pictures" label="Pictures" component={ FileInputField } maxFiles={ 20 } public={ true } />
+            <Field name="pictures" label="Pictures" component={FileInputField} maxFiles={20} public={true} />
           </Grid.Box>
           <Grid.Box>
-            <Field name="title" label="Title" type="text" component={ InputField } />
+            <Field name="title" label="Title" type="text" component={InputField} />
           </Grid.Box>
           <Grid.Box>
-            <Field name="description" label="Description" type="text" component={ InputField } />
+            <Field name="description" label="Description" type="text" component={InputField} />
           </Grid.Box>
           <Grid.Box>
-            <Field name="bedrooms" label="Bedrooms" type="text" component={ InputField } />
+            <Field name="bedrooms" label="Bedrooms" type="text" component={InputField} />
           </Grid.Box>
           <Grid.Box>
-            <Field name="sqFootage" label="Sq Footage" type="text" component={ InputField } />
+            <Field name="sqFootage" label="Sq Footage" type="text" component={InputField} />
           </Grid.Box>
           <Grid.Box>
-            <Field name="bathrooms" label="Bathrooms" type="text" component={ InputField } />
+            <Field name="bathrooms" label="Bathrooms" type="text" component={InputField} />
           </Grid.Box>
           <Grid.Box>
-            <Field name="garage" label="Garage" component={ CheckboxField } />
+            <Field name="garage" label="Garage" component={CheckboxField} />
           </Grid.Box>
           <Grid.Box>
-            <Field name="pool" label="Pool" component={ CheckboxField } />
+            <Field name="pool" label="Pool" component={CheckboxField} />
           </Grid.Box>
         </Grid.Layout>
       </Dialog.Body>
       <Dialog.Footer>
-        <Button color="neutral" variant="outlined" disabled={ submitting } onClick={ this.onClose }>Cancel</Button>
-        <Button color="primary" type="submit" loading={ submitting }>Create Property</Button>
+        <Button color="neutral" variant="outlined" disabled={submitting} onClick={this.onClose}>
+          Cancel
+        </Button>
+        <Button color="primary" type="submit" loading={submitting}>
+          Create Property
+        </Button>
       </Dialog.Footer>
     </form>
   );
 
   render() {
     return (
-      <Dialog id={ PROPERTY_CREATE_DIALOG_ID } size="sm">
-        <Form type="CREATE" tableSchemaName="Properties" onSubmit={ this.onSubmit }>
-          { this.renderFormContent }
+      <Dialog id={PROPERTY_CREATE_DIALOG_ID} size="sm">
+        <Form type="CREATE" tableSchemaName="Properties" onSubmit={this.onSubmit}>
+          {this.renderFormContent}
         </Form>
       </Dialog>
     );
@@ -77,7 +81,7 @@ PropertyCreateDialog = graphql(sharedGraphQL.PROPERTY_CREATE_MUTATION, {
   options: {
     refetchQueries: ['PropertiesList'],
     context: {
-      [TOAST_SUCCESS_MESSAGE]: 'Property successfuly created'
+      [TOAST_SUCCESS_MESSAGE]: 'Property successfuly created',
     },
   },
 })(PropertyCreateDialog);

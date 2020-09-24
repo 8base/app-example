@@ -20,51 +20,49 @@ let CustomersTable = ({ customers, openModal, closeModal }) => (
       <Table.HeaderCell />
     </Table.Header>
 
-    <Table.Body loading={ customers.loading } data={ R.pathOr([], ['customersList', 'items'], customers) } action="Create Customer" onActionClick={() => openModal(CustomerCreateDialog.id)}>
-      {
-        (customer) => (
-          <Table.BodyRow columns="repeat(5, 1fr) 60px" key={ customer.id }>
-            <Table.BodyCell>
-              { R.pathOr('Unititled', ['user', 'firstName'], customer) }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { R.pathOr('Unititled', ['user', 'lastName'], customer) }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { R.pathOr('Unititled', ['user', 'email'], customer) }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { R.pathOr(0, ['purchases', 'count'], customer) }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              { R.pathOr(0, ['sales', 'count'], customer) }
-            </Table.BodyCell>
-            <Table.BodyCell>
-              <Dropdown defaultOpen={ false }>
-                <Dropdown.Head>
-                  <Icon name="More" color="LIGHT_GRAY2" />
-                </Dropdown.Head>
-                <Dropdown.Body pin="right">
-                  {
-                    ({ closeDropdown }) => (
-                      <Menu>
-                        <Menu.Item onClick={ () => { openModal(CustomerDeleteDialog.id, { id: customer.id }); closeDropdown(); } }>Delete</Menu.Item>
-                      </Menu>
-                    )
-                  }
-                </Dropdown.Body>
-              </Dropdown>
-            </Table.BodyCell>
-          </Table.BodyRow>
-        )
-      }
+    <Table.Body
+      loading={customers.loading}
+      data={R.pathOr([], ['customersList', 'items'], customers)}
+      action="Create Customer"
+      onActionClick={() => openModal(CustomerCreateDialog.id)}
+    >
+      {customer => (
+        <Table.BodyRow columns="repeat(5, 1fr) 60px" key={customer.id}>
+          <Table.BodyCell>{R.pathOr('Unititled', ['user', 'firstName'], customer)}</Table.BodyCell>
+          <Table.BodyCell>{R.pathOr('Unititled', ['user', 'lastName'], customer)}</Table.BodyCell>
+          <Table.BodyCell>{R.pathOr('Unititled', ['user', 'email'], customer)}</Table.BodyCell>
+          <Table.BodyCell>{R.pathOr(0, ['purchases', 'count'], customer)}</Table.BodyCell>
+          <Table.BodyCell>{R.pathOr(0, ['sales', 'count'], customer)}</Table.BodyCell>
+          <Table.BodyCell>
+            <Dropdown defaultOpen={false}>
+              <Dropdown.Head>
+                <Icon name="More" color="LIGHT_GRAY2" />
+              </Dropdown.Head>
+              <Dropdown.Body pin="right">
+                {({ closeDropdown }) => (
+                  <Menu>
+                    <Menu.Item
+                      onClick={() => {
+                        openModal(CustomerDeleteDialog.id, { id: customer.id });
+                        closeDropdown();
+                      }}
+                    >
+                      Delete
+                    </Menu.Item>
+                  </Menu>
+                )}
+              </Dropdown.Body>
+            </Dropdown>
+          </Table.BodyCell>
+        </Table.BodyRow>
+      )}
     </Table.Body>
   </Table>
 );
 
 CustomersTable = compose(
   withModal,
-  graphql(sharedGraphQL.CUSTOMERS_LIST_QUERY, { name: 'customers' }),
+  graphql(sharedGraphQL.CUSTOMERS_LIST_QUERY, { name: 'customers' })
 )(CustomersTable);
 
 export { CustomersTable };

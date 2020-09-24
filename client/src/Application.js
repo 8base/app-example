@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { AppProvider } from '@8base/react-sdk';
+import { AppProvider } from '@8base-react/app-provider';
 import { Auth, AUTH_STRATEGIES } from '@8base/auth';
 import { BoostProvider, AsyncContent } from '@8base/boost';
 import { ToastContainer, toast } from 'react-toastify';
 
 import { ProtectedRoute } from 'shared/components';
-import { TOAST_SUCCESS_MESSAGE } from 'shared/constants';
+import { HIDE_TOAST_ERROR_MESSAGE, TOAST_SUCCESS_MESSAGE } from 'shared/constants';
 
 import { MainPlate, ContentPlate, Nav } from './components';
 import { Auth as AuthCallback } from './routes/auth';
@@ -15,49 +15,49 @@ import { Customers } from './routes/customers';
 import { Properties } from './routes/properties';
 import { Listings } from './routes/listings';
 
-const { REACT_APP_8BASE_API_ENDPOINT } = process.env;
+const { REACT_APP_8BASE_API_ENDPOINT, REACT_APP_CLIENT_DOMAIN, REACT_APP_CLIENT_ID } = process.env;
 
-const AUTH0_CLIENT_ID = 'qGHZVu5CxY5klivm28OPLjopvsYp0baD';
-const AUTH0_CLIENT_DOMAIN = 'auth.8base.com';
+const authClient = Auth.createClient(
+  {
+    strategy: AUTH_STRATEGIES.WEB_COGNITO,
+    subscribable: true,
+  },
+  {
+    clientId: REACT_APP_CLIENT_ID,
+    domain: REACT_APP_CLIENT_DOMAIN,
+    redirectUri: `${window.location.origin}/auth/callback`,
+    logoutRedirectUri: `${window.location.origin}/auth`,
+  }
+);
 
-const authClient = Auth.createClient({
-  strategy: AUTH_STRATEGIES.WEB_AUTH0,
-  subscribable: true,
-}, {
-  clientId: AUTH0_CLIENT_ID,
-  domain: AUTH0_CLIENT_DOMAIN,
-  redirectUri: `${window.location.origin}/auth/callback`,
-  logoutRedirectUri: `${window.location.origin}/auth`,
-});
+const Routes = () => {
+  return (
+    <Switch>
+      <Route path="/auth" component={AuthCallback} />
+      <Route>
+        <MainPlate>
+          <Nav.Plate color="BLUE">
+            <Nav.Item icon="Group" to="/brokers" label="Brokers" />
+            <Nav.Item icon="Customers" to="/customers" label="Customers" />
+            <Nav.Item icon="House" to="/properties" label="Properties" />
+            <Nav.Item icon="Contract" to="/listings" label="Listings" />
+          </Nav.Plate>
+          <ContentPlate>
+            <Switch>
+              <ProtectedRoute exact path="/brokers" component={Brokers} />
+              <ProtectedRoute exact path="/customers" component={Customers} />
+              <ProtectedRoute exact path="/properties" component={Properties} />
+              <ProtectedRoute exact path="/listings" component={Listings} />
+              <Redirect to="/brokers" />
+            </Switch>
+          </ContentPlate>
+        </MainPlate>
+      </Route>
+    </Switch>
+  );
+};
 
 class Application extends React.PureComponent {
-  renderContent = ({ loading }) => (
-    <AsyncContent loading={loading} stretch>
-      <Switch>
-        <Route path="/auth" component={AuthCallback} />
-        <Route>
-          <MainPlate>
-            <Nav.Plate color="BLUE">
-              <Nav.Item icon="Group" to="/brokers" label="Brokers" />
-              <Nav.Item icon="Customers" to="/customers" label="Customers" />
-              <Nav.Item icon="House" to="/properties" label="Properties" />
-              <Nav.Item icon="Contract" to="/listings" label="Listings" />
-            </Nav.Plate>
-            <ContentPlate>
-              <Switch>
-                <ProtectedRoute exact path="/brokers" component={Brokers} />
-                <ProtectedRoute exact path="/customers" component={Customers} />
-                <ProtectedRoute exact path="/properties" component={Properties} />
-                <ProtectedRoute exact path="/listings" component={Listings} />
-                <Redirect to="/brokers" />
-              </Switch>
-            </ContentPlate>
-          </MainPlate>
-        </Route>
-      </Switch>
-    </AsyncContent>
-  );
-
   onRequestSuccess = ({ operation }) => {
     const message = operation.getContext()[TOAST_SUCCESS_MESSAGE];
 
@@ -66,10 +66,11 @@ class Application extends React.PureComponent {
     }
   };
 
-  onRequestError = ({ graphQLErrors }) => {
+  onRequestError = ({ graphQLErrors, operation }) => {
     const hasGraphQLErrors = Array.isArray(graphQLErrors) && graphQLErrors.length > 0;
+    const hideToastErrorMessage = operation.getContext()[HIDE_TOAST_ERROR_MESSAGE];
 
-    if (hasGraphQLErrors) {
+    if (hasGraphQLErrors && !hideToastErrorMessage) {
       graphQLErrors.forEach(error => {
         toast.error(error.message);
       });
@@ -86,7 +87,11 @@ class Application extends React.PureComponent {
             onRequestSuccess={this.onRequestSuccess}
             onRequestError={this.onRequestError}
           >
-            {this.renderContent}
+            {({ loading }) => (
+              <AsyncContent loading={loading} stretch>
+                <Routes />
+              </AsyncContent>
+            )}
           </AppProvider>
           <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
         </BoostProvider>
