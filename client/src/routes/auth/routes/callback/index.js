@@ -17,8 +17,10 @@ export const CallbackContainer = withAuth(({ auth }) => {
     () => {
       const fetchData = async () => {
         const { idToken, email, firstName, lastName } = await auth.authClient.getAuthorizedData();
+        console.log({ idToken, email, firstName, lastName });
 
         auth.authClient.setState({ token: idToken, email });
+        console.log(auth.authClient);
 
         try {
           await client.query({
@@ -40,6 +42,7 @@ export const CallbackContainer = withAuth(({ auth }) => {
             },
           });
         } finally {
+          console.log('finally');
           history.replace('/');
         }
       };

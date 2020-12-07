@@ -1,6 +1,6 @@
 import React from 'react';
 import * as R from 'ramda';
-import { Form, Field } from '@8base/forms';
+import { Form, Field } from '@8base-react/forms';
 import { Dialog, Grid, Button, InputField, SelectField, DateInputField, ModalContext } from '@8base/boost';
 import { Query, graphql } from 'react-apollo';
 

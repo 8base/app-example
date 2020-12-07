@@ -33,6 +33,8 @@ class ProtectedRoute extends React.Component {
       auth: { isAuthorized },
       ...rest
     } = this.props;
+    console.log(this.props, 'props');
+    console.log(isAuthorized, 'isAuthorized');
 
     if (isAuthorized) {
       return renderComponent(rest);
