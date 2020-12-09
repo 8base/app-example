@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Field } from '@8base/forms';
+import { Form, Field } from '@8base-react/forms';
 import { Dialog, Grid, Button, InputField, ModalContext } from '@8base/boost';
 import { graphql } from 'react-apollo';
 

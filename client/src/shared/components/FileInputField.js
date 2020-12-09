@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileInput } from '@8base/file-input';
+import { FileInput } from '@8base-react/file-input';
 import { Button, Form, Row, Text } from '@8base/boost';
 
 export const FileInputField = ({ input, meta, maxFiles, label, ...rest }) => (
