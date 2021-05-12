@@ -5,7 +5,7 @@
     "graphql": "^14.0.2",
     "graphql-request": "^1.6.0",
     "graphql-tag": "^2.10.0",
-    "nodemailer": "^4.6.8",
+    "nodemailer": "^6.4.16",
     "path": "^0.12.7"
   },
   "license": "MIT"
