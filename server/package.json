@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "graphql": "^14.0.2",
-    "graphql-request": "^1.6.0",
+    "graphql-request": "^2.0.0",
     "graphql-tag": "^2.10.0",
     "nodemailer": "^4.6.8",
     "path": "^0.12.7"
